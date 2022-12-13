@@ -30,8 +30,8 @@
                 <configuration>
                     <inputSpec>${basedir}/openapi/gpseram.yaml</inputSpec>
                     <language>jaxrs-cxf</language>
-                    <modelPackage>org.globalplatform.gpseram.bean</modelPackage>
-                    <apiPackage>org.globalplatform.gpseram.service</apiPackage> 
+                    <modelPackage>org.globalplatform.se.ram.bean</modelPackage>
+                    <apiPackage>org.globalplatform.se.ram.service</apiPackage> 
                     <generateApis>false</generateApis>
                     <generateModels>true</generateModels>
                     <generateModelDocumentation>false</generateModelDocumentation>
