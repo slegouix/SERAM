@@ -10,9 +10,11 @@ info:
     \ POST methods. Refer to initialization and seApplicationManagement phase below.<br> <br> The\
     \ Remote Admin Agent is acting as an HTTP server and the Local Admin Agent as\
     \ an HTTP Client. During the initialization phase, the local Admin Agent provides a list of\
-    \ supported data format and transport protocol. The server selects the best option <br>
+    \ supported data format and transport protocol. The server selects the best option and \
+    \ continue with the selected binding.
     \
-    \ explain in <b>qsmdlfk.md<b>"
+    \ This OpenAPI specification is self-documentated. Please refer to the\
+    \ [ GP SERAM github](http://github.com/slegouix/SERAM) for additional information."
 
   license:
     name: "MIT"
