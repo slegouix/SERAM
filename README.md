@@ -16,7 +16,6 @@ payment applications, transit applications, or access applications.
 To understand the protocol, please, refer to:
 
 * [GP SERAM Protocol Overview](doc/GPSERAM_v2__Overview.md)
-* [GP SERAM Messages](doc/GPSERAM_v2__Messages.md)
 
 Protocol binding
 ----------------
@@ -25,14 +24,4 @@ For **GP SERAM - HTTP REST Binding** please refer to:
 
 * [HTTP REST Binding - OpenAPI specification](spec/gpseram_v2.yaml) ([Viewer](https://slegouix.github.io/SERAM/))
 * [HTTP REST Binding - explanation](doc/GPSERAM_v2_HTTP_REST_Binding.md)
-
-For **GP SERAM - COAP Binding** please refer to:
-* [CoAP Binding - CDDL specification](spec/gpseram_v2.ccdl)
-* [CoAP Binding - explanation](doc/GPSERAM_v2__CoAP_Binding.md)
-
-Use Case
---------
-
-* [SAM Use Case](GPSERAM_v2_SAM_Use_Case.md)
-* [LPA Proxy Use Case](GPSERAM_v2_LPA_Proxy_Use_Case.md)
 
