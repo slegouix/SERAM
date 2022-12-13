@@ -8,7 +8,7 @@ Architecture
 The following figure present the generic architecture of GP SERAM and
 its environment. All part in blue is defined in this specification.
 
-![Architecture Overview](images/image4.png")
+![Architecture Overview](images/image4.png)
 
 In this architecture, a Remote Agent and a Local Agent manage the
 protocol to allow the Management Platform to interact with a Device
@@ -48,7 +48,7 @@ Protocol design
 GP SERAM is a message-oriented protocol which used the following
 protocol stack:
 
-![Protocol layers]("images/image5.png")
+![Protocol layers](images/image5.png)
 
 Messages are the data exchanged between the Remote Agent and the Local
 Agent. The definition, the meaning and sequency of Messages are states
@@ -86,7 +86,7 @@ Agent and the Remote Agent.
 The timing frame during which it is performed some management tasks that
 are associated with one sessionID is called the Management Session.
 
-![Management Session]("images/image6.png")
+![Management Session](images/image6.png)
 
 The Management Session is started by the Device Application and is then
 controlled until its end by the Remote Agent.

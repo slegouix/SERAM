@@ -15,8 +15,8 @@ payment applications, transit applications, or access applications.
 
 To understand the protocol, please, refer to:
 
-* [GP SERAM Protocol Overview](doc/GPSERAM_v2_Overview.md)
-* [GP SERAM Messages](doc/GPSERAM_v2_Messages.md)
+* [GP SERAM Protocol Overview](doc/GPSERAM_v2__Overview.md)
+* [GP SERAM Messages](doc/GPSERAM_v2__Messages.md)
 
 Protocol binding
 ----------------
@@ -28,7 +28,7 @@ For **GP SERAM - HTTP REST Binding** please refer to:
 
 For **GP SERAM - COAP Binding** please refer to:
 * [CoAP Binding - CDDL specification](spec/gpseram_v2.ccdl)
-* [CoAP Binding - explanation](doc/GPSERAM_v2_CoAP_Binding.md)
+* [CoAP Binding - explanation](doc/GPSERAM_v2__CoAP_Binding.md)
 
 Use Case
 --------
