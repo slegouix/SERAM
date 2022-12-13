@@ -30,16 +30,13 @@
                 <configuration>
                     <inputSpec>${basedir}/openapi/gpseram.yaml</inputSpec>
                     <language>jaxrs-cxf</language>
-                    <modelPackage>com.orange.se.sam.bean</modelPackage>
-                    <apiPackage>com.orange.se.sam.service</apiPackage> 
+                    <modelPackage>org.globalplatform.gpseram.bean</modelPackage>
+                    <apiPackage>org.globalplatform.gpseram.service</apiPackage> 
                     <generateApis>false</generateApis>
                     <generateModels>true</generateModels>
                     <generateModelDocumentation>false</generateModelDocumentation>
                     <generateModelTests>false</generateModelTests>
                     <generateSupportingFiles>false</generateSupportingFiles>                           
-                    <!--configOptions>
-                        <sourceFolder>../../../generated/src/main/java</sourceFolder>                                
-                    </configOptions-->
                 </configuration>
                 <executions>
                     <execution>
