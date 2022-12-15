@@ -1,28 +1,33 @@
-openapi: "3.0.3"
+openapi: 3.0.3
 info:
-  title: "GP SERAM"
-  version: "2.0.0"
-  description: "This specification allows a Remote Admin Agent to manage a Secure\
-    \ Element thanks to a Local Admin Agent.
-    \ <br> <br> 2 layers is provided here:<br>\
-    \ - the data model which details messages which are exchanges. Refer to the Schemas\
-    \ section below.<br> - the HTTP REST binding, details in terms of HTTP GET and\
-    \ POST methods. Refer to initialization and seApplicationManagement phase below.<br> <br> The\
-    \ Remote Admin Agent is acting as an HTTP server and the Local Admin Agent as\
-    \ an HTTP Client. During the initialization phase, the local Admin Agent provides a list of\
-    \ supported data format and transport protocol. The server selects the best option and \
-    \ continue with the selected binding.
-    \
-    \ This OpenAPI specification is self-documentated. Please refer to the\
-    \ [ GP SERAM github](http://github.com/slegouix/SERAM) for additional information."
+  title: GP SERAM
+  version: 2.0.0
+  description: >-
+    This specification allows a Remote Admin Agent to manage a Secure
+    Element thanks to a Local Admin Agent.<br>
+    <br>
+    2 layers is provided here:<br>
+    - the data model which details messages which are exchanges. Refer to the
+    Schemas section below.<br>
+    - the HTTP REST binding, details in terms of HTTP GET and POST methods.
+    Refer to initialization and seApplicationManagement phase below.<br>
+    <br>
+    The Remote Admin Agent is acting as an HTTP server and the Local Admin
+    Agent as an HTTP Client. During the initialization phase, the local Admin
+    Agent provides a list of supported data format and transport protocol. The
+    server selects the best option and  continue with the selected binding.
+
+    This OpenAPI specification is self-documentated. Please refer to the
+    [ GP SERAM github](http://github.com/slegouix/SERAM) for additional information.
 
   license:
-    name: "MIT"
-    url: "https://opensource.org/licenses/MIT"
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
 tags:
-  - name: "seApplicationManagementService"
-    description: "Remote Admin Agent performs the remote management by sending orders\
-      \ to the Local Admin Agent"
+  - name: seApplicationManagementService
+    description: >-
+      Remote Admin Agent performs the remote management by sending orders to
+      the Local Admin Agent
 servers:
   - url: '{protocol}://{domain}/gp/seram'
     variables:
@@ -39,117 +44,125 @@ paths:
   /handshake:
     post:
       tags:
-      - "seApplicationManagementService"
-      summary: "method used to negociate data format and the transport protocol"
-      description: "This method shall be used by the HTTP client to tell which data\
-        \ formats and which transport protocols it supports. In response, the HTTP\
-        \ server shall tell which ones it selects.<br> <br> The DataFormat describes\
-        \ which data format is used for message payloads.<br> <br> The TransportProtocol\
-        \ describes the transport protocol binding. It details how setting-up the\
-        \ transport layer (if required), exchanging the messages payload between RAA\
-        \ and LAA, keeping the integrity of the remote management session and resuming\
-        \ communications in case of a data exchange failure<br> <br> The HTTP client shall\
-        \ used the sessionId to allow the HTTP server to track the remote management. The\
-        \ HTTP client shall reused the sessionId in all subsequent HTTP request to the\
-        \ HTTP server"
+        - seApplicationManagementService
+      summary: method used to negociate data format and the transport protocol
+      description: >-
+        This method shall be used by the HTTP client to tell which data
+        formats and which transport protocols it supports. In response, the
+        HTTP server shall tell which ones it selects.<br> <br> The DataFormat
+        describes which data format is used for message payloads.<br> <br> The
+        TransportProtocol describes the transport protocol binding. It details
+        how setting-up the transport layer (if required), exchanging the
+        messages payload between RAA and LAA, keeping the integrity of the
+        remote management session and resuming  communications in case of a
+        data exchange failure<br>
+        <br>
+        The HTTP client shall used the sessionId to allow the HTTP server to
+        track the remote management. The HTTP client shall reused the
+        sessionId in all subsequent HTTP request to the HTTP server
       parameters:
         - name: sessionId
           in: query
           required: true
           schema:
-            $ref: "attributes.yaml#/sessionId"
+            $ref: 'attributes.yaml#/sessionId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "messages.yaml#/ramHandshakeCommand"
+              $ref: 'messages.yaml#/ramHandshakeCommand'
       responses:
-        "200":
-          description: "OK"
+        '200':
+          description: OK
           content:
             application/json:
               schema:
-                $ref: "messages.yaml#/ramHandshakeResponse"
-        "404":
+                $ref: 'messages.yaml#/ramHandshakeResponse'
+        '404':
           description: Session id not found
-        "406":
+        '406':
           description: HTTP Server could not fulfill the client proposal
-        "500":
+        '500':
           description: Unknown server error
 
   /remoteManagement:
     post:
       tags:
-      - "seApplicationManagementService"
-      summary: "Method used to respond to a remote management command."
-      description: "This method shall be used by the HTTP client to transmit its response\
-        \ to the HTTP server. <br><br> In response, the HTTP server shall send the next remote\
-        \ management order."
+        - seApplicationManagementService
+      summary: Method used to respond to a remote management command.
+      description: >-
+        This method shall be used by the HTTP client to transmit its response
+        to the HTTP server. <br><br> In response, the HTTP server shall send
+        the next remote management order.
       parameters:
         - name: sessionId
           in: query
           required: true
           schema:
-            $ref: "attributes.yaml#/sessionId"
+            $ref: 'attributes.yaml#/sessionId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/remoteManagementMsg"
+              $ref: '#/components/schemas/remoteManagementMsg'
       responses:
-        "200":
-          description: "OK"
+        '200':
+          description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/remoteManagementOrder"
-        "404":
+                $ref: '#/components/schemas/remoteManagementOrder'
+        '404':
           description: Session id not found
-        "500":
+        '500':
           description: Unknown server error
 
 components:
   schemas:
 
     remoteManagementOrder:
-      description: "This is the data model for the remote management order.\
-        \ The Remote Agent may used it to maintain the connection\
-        \ with the Local Agent or to send Message Command to the\
-        \ Local Agent. All fields are optional."
+      description: >-
+        This is the data model for the remote management order. The Remote
+        Agent may used it to maintain the connection with the Local Agent
+        or to send Message Command to the Local Agent. All fields are
+        optional.
       properties:
         delay:
-          description: "Delay in second the device local agent had to wait\
-            \ before sending data to the platform."
-          type: "integer"
+          description: >-
+            Delay in second the device local agent had to wait before sending
+            data to the platform.
+          type: integer
           default: 1
         chosenSecureElement:
           allOf:
-            - description: "Set the Secure Element the Local Agent SHALL used\
-                \ to send C-APDU"
-            - $ref: "attributes.yaml#/secureElement"
+            - description: >-
+                Set the Secure Element the Local Agent SHALL used to send
+                C-APDU
+            - $ref: 'attributes.yaml#/secureElement'
         ramCommands:
-          description: "List of Commands to be executed by the Local Agent."
+          description: List of Commands to be executed by the Local Agent.
           type: array
           items:
-            $ref: "messages.yaml#/ramCommand"
+            $ref: 'messages.yaml#/ramCommand'
 
     remoteManagementMsg:
-      description: "This is the data model for the remote management\
-        \ containing SE ram responses. In case of polling message, or for the\
-        \ first polling message, only the localAgentStatus is included."
-      type: "object"
+      description: >-
+        This is the data model for the remote management containing SE ram
+        responses. In case of polling message, or for the first polling
+        message, only the localAgentStatus is included.
+      type: object
       required:
-      - "localAgentStatus"
+        - localAgentStatus
       properties:
         localAgentStatus:
           allOf:
-            - description: "Status of the Local Agent"
-            - $ref: "attributes.yaml#/localAgentStatus"
+            - description: Status of the Local Agent
+            - $ref: 'attributes.yaml#/localAgentStatus'
         ramResponses:
-          description: "The list of RAM responses"
-          type: "array"
+          description: The list of RAM responses
+          type: array
           items:
-            $ref: "messages.yaml#/ramResponse"
+            $ref: 'messages.yaml#/ramResponse'
 
