@@ -14,12 +14,12 @@ The formal API specification of the *HTTP REST Binding* is provided in
 generate code skeleton.
 
 The *HTTP REST Binding* SHALL comply with:
-- [RFC2818 - HTTP Over TLS](https://www.rfc-editor.org/rfc/rfc2818)
-- [RFC6265 - IETF – HTTP State Management Mechanism](https://www.rfc-editor.org/rfc/rfc6265)
-- [RFC7230 - IETF – Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing](https://www.rfc-editor.org/rfc/rfc7230)
-- [RFC7231 - IETF – Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://www.rfc-editor.org/rfc/rfc7231)
-- [RFC7232 - IETF – Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests](https://www.rfc-editor.org/rfc/rfc7232)
-- [RFC7234 - IETF – Hypertext Transfer Protocol (HTTP/1.1): Caching](https://www.rfc-editor.org/rfc/rfc7234)
+- [RFC2818 – HTTP Over TLS](https://www.rfc-editor.org/rfc/rfc2818)
+- [RFC6265 – HTTP State Management Mechanism](https://www.rfc-editor.org/rfc/rfc6265)
+- [RFC7230 – Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing](https://www.rfc-editor.org/rfc/rfc7230)
+- [RFC7231 – Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content](https://www.rfc-editor.org/rfc/rfc7231)
+- [RFC7232 – Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests](https://www.rfc-editor.org/rfc/rfc7232)
+- [RFC7234 – Hypertext Transfer Protocol (HTTP/1.1): Caching](https://www.rfc-editor.org/rfc/rfc7234)
 
 
 Management Session and HTTP messages
