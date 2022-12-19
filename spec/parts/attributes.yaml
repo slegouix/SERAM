@@ -79,7 +79,7 @@
       example: '0f96af97-f879-45a2-a011-ee7439df3804'
 
     transportProtocol:
-      description: A transport protocol to exchange GPSERAM Messages.
+      description: A transport protocol to exchange GP SERAM Messages.
       type: string
       enum:
         - HTTPS

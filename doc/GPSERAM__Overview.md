@@ -79,12 +79,12 @@ Others Protocol Binding may be defined in the future.
 ### Management Session
 
 To synchronize the management process, a Device Application and a
-Management Platform relies on a session identifier, named sessionID. The
-sessionID is shared and used for all communications between the Remote
+Management Platform relies on a session identifier, named sessionId. The
+sessionId is shared and used for all communications between the Remote
 Agent and the Remote Agent.
 
 The timing frame during which it is performed some management tasks that
-are associated with one sessionID is called the Management Session.
+are associated with one sessionId is called the Management Session.
 
 ![Management Session](images/image6.png)
 
@@ -94,7 +94,7 @@ controlled until its end by the Remote Agent.
 ### Protocol Steps
 
 As shown by the next figure, the protocol has three steps. First the
-Local Agent is triggered by the Device Application with the sessionID
+Local Agent is triggered by the Device Application with the sessionId
 and the RA Endpoint. It then negotiates the Data Format and Transport
 protocol to use with the Remote Agent. Finally, the Remote Agent make
 the task required for the Management Session.
@@ -120,12 +120,12 @@ Protocol Steps details
 
 ### Initialization Step
 
-During this phase, a session identifier, named sessionID, SHALL be
+During this phase, a session identifier, named sessionId, SHALL be
 generated and shared between the Device Application and the Management
-Platform. How this sessionID is generated and shared is out of the scope
+Platform. How this sessionId is generated and shared is out of the scope
 of this specification.
 
-The sessionID SHALL be a unique identifier for the Device Application
+The sessionId SHALL be a unique identifier for the Device Application
 and the Management Platform. How this uniqueness is handled is out of
 the scope of this specification.
 
@@ -134,7 +134,7 @@ has been shared between entities. How this Endpoint is defined and
 shared is out of the scope of this specification.
 
 GP SERAM session starts after the Local Agent is triggered with the
-sessionID and the RA Endpoint of the Remote Agent. The Local Agent
+sessionId and the RA Endpoint of the Remote Agent. The Local Agent
 starts with the Handshake step.
 
 ### Handshake Step
@@ -161,7 +161,7 @@ The attributes which are negotiate are:
 -   The version of the protocol
 
 To allow the Remote Agent to track the Remote Management Session the
-Local Agent provides a sessionID that shall be reused in all subsequent
+Local Agent provides a sessionId that shall be reused in all subsequent
 exchanges as defined by the selected Protocol Binding.
 
 The Handshake shall be performed using the HTTP REST Protocol Binding.
@@ -194,7 +194,7 @@ Management Session Steps are illustrated with the two types of RAM
 Command that can be sent by a Remote Agent after the RAM Start Command
 Message and until the RAM Stop Command Message.
 
-[Protocol overview](images/image9.png)
+![Protocol overview](images/image9.png)
 
 Messages
 ========

@@ -53,9 +53,9 @@ paths:
         describes which data format is used for message payloads.<br> <br> The
         TransportProtocol describes the transport protocol binding. It details
         how setting-up the transport layer (if required), exchanging the
-        messages payload between RAA and LAA, keeping the integrity of the
-        remote management session and resuming  communications in case of a
-        data exchange failure<br>
+        messages payload between Remote Agent and Local Agent, keeping the
+        integrity of the remote management session and resuming communications
+        in case of a data exchange failure<br>
         <br>
         The HTTP client shall used the sessionId to allow the HTTP server to
         track the remote management. The HTTP client shall reused the
@@ -149,7 +149,7 @@ components:
 
     remoteManagementMsg:
       description: >-
-        This is the data model for the remote management containing SE ram
+        This is the data model for the remote management containing SE RAM
         responses. In case of polling message, or for the first polling
         message, only the localAgentStatus is included.
       type: object

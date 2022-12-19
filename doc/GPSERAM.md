@@ -303,9 +303,9 @@ Definitions
 | Device                        | User equipment used in conjunction with an eUICC to connect to a mobile network. E.g. a tablet, wearable, smartphone, or handset.                                                        |
 | Device Application            | Any piece of software in the Device. It may be a Device component or an external third-party application.                                                                                |
 | Handshake                     | Protocol Step during which the Secure Element and the Protocol Binding to be used for the Remote Management Session is selected.                                                         |
-| Initialization                | Protocol Step during which the sessionID is generated and shared                                                                                                                         |
+| Initialization                | Protocol Step during which the sessionId is generated and shared                                                                                                                         |
 | Management Platform           | A cloud infrastructure able to manage some Secure Element.                                                                                                                               |
-| Management Session            | The timing frame during which the management task associated with a sessionID is performed.                                                                                              |
+| Management Session            | The timing frame during which the management task associated with a sessionId is performed.                                                                                              |
 | Message                       | A dataset of Properties exchanged during a Management Session.                                                                                                                           |
 | Protocol Binding              | Rules associated with a Data Format and a Transport protocol to exchange Message                                                                                                         |
 | Protocol Step                 | Part of the Management Session.                                                                                                                                                          |
@@ -314,7 +314,7 @@ Definitions
 | Response                      | Message that provides a response to a Command Message                                                                                                                                    |
 | Rich Execution Environment    | As defined by GP TEE                                                                                                                                                                     |
 | Secure Element                | Physical component attached with the Device manageable according with GP Card specification.                                                                                             |
-| sessionID                     | An identifier shared between the Device Application and the Management Platform and associated with a Management Session                                                                 |
+| sessionId                     | An identifier shared between the Device Application and the Management Platform and associated with a Management Session                                                                 |
 | Step                          | See Protocol Step                                                                                                                                                                        |
 | Transport                     | The transport protocol used between Remote Agent and Local Agent.                                                                                                                        |
 | Trusted Execution Environment | As defined by GP TEE                                                                                                                                                                     |
@@ -439,12 +439,12 @@ Others Protocol Binding may be defined in the future.
 ### Management Session
 
 To synchronize the management process, a Device Application and a
-Management Platform relies on a session identifier, named sessionID. The
-sessionID is shared and used for all communications between the Remote
+Management Platform relies on a session identifier, named sessionId. The
+sessionId is shared and used for all communications between the Remote
 Agent and the Remote Agent.
 
 The timing frame during which it is performed some management tasks that
-are associated with one sessionID is called the Management Session.
+are associated with one sessionId is called the Management Session.
 
 Figure ‑ – Management Session
 
@@ -456,7 +456,7 @@ controlled until its end by the Remote Agent.
 ### Protocol Steps
 
 As shown by the next figure, the protocol has three steps. First the
-Local Agent is triggered by the Device Application with the sessionID
+Local Agent is triggered by the Device Application with the sessionId
 and the RA Endpoint. It then negotiates the Data Format and Transport
 protocol to use with the Remote Agent. Finally, the Remote Agent make
 the task required for the Management Session.
@@ -484,12 +484,12 @@ Protocol Steps details
 
 ### Initialization Step
 
-During this phase, a session identifier, named sessionID, SHALL be
+During this phase, a session identifier, named sessionId, SHALL be
 generated and shared between the Device Application and the Management
-Platform. How this sessionID is generated and shared is out of the scope
+Platform. How this sessionId is generated and shared is out of the scope
 of this specification.
 
-The sessionID SHALL be a unique identifier for the Device Application
+The sessionId SHALL be a unique identifier for the Device Application
 and the Management Platform. How this uniqueness is handled is out of
 the scope of this specification.
 
@@ -498,7 +498,7 @@ has been shared between entities. How this Endpoint is defined and
 shared is out of the scope of this specification.
 
 GP SERAM session starts after the Local Agent is triggered with the
-sessionID and the RA Endpoint of the Remote Agent. The Local Agent
+sessionId and the RA Endpoint of the Remote Agent. The Local Agent
 starts with the Handshake step.
 
 ### Handshake Step
@@ -525,7 +525,7 @@ The attributes which are negotiate are:
 -   The version of the protocol
 
 To allow the Remote Agent to track the Remote Management Session the
-Local Agent provides a sessionID that shall be reused in all subsequent
+Local Agent provides a sessionId that shall be reused in all subsequent
 exchanges as defined by the selected Protocol Binding.
 
 The Handshake shall be performed using the HTTP REST Protocol Binding.
@@ -610,7 +610,7 @@ Command properties
 
 | **Name**                    | **Description**                                                 | **No.** | **MOC** |
 |-----------------------------|-----------------------------------------------------------------|---------|---------|
-| sessionID                   | Identifier of the current Remote Management Session             | 1       | M       |
+| sessionId                   | Identifier of the current Remote Management Session             | 1       | M       |
 | secureElements              | A list of Secure Element available on Local Agent side          | 1       | M       |
 | supportedTransportProtocols | A list of Transport Protocol supported by the Local Agent       | 1       | O       |
 | supportedDataFormats        | A list of Data Format supported by the Local Agent.             | 1       | O       |
@@ -660,7 +660,7 @@ Response properties
 
 | **Name**                | **Description**                                      | **No.** | **MOC** |
 |-------------------------|------------------------------------------------------|---------|---------|
-| sessionID               | Identifier of the current Remote Management Session  | 1       | M       |
+| sessionId               | Identifier of the current Remote Management Session  | 1       | M       |
 | chosenSecureElement     | The Secure Element selected by the Remote Agent      | 1       | C       |
 | chosenTransportProtocol | The Transport Protocol selected by the Remote Agent  | 1       | C       |
 | chosenDataProtocol      | The Data Protocol selected by the Remote Agent.      | 1       | C       |
@@ -701,7 +701,7 @@ Command properties
 
 | **Name**  | **Description**                                     | **No.** | **MOC** |
 |-----------|-----------------------------------------------------|---------|---------|
-| sessionID | Identifier of the current Remote Management Session | 1       | M       |
+| sessionId | Identifier of the current Remote Management Session | 1       | M       |
 
 SE RAM Command Message
 ----------------------
@@ -719,7 +719,7 @@ properties
 
 | **Name**    | **Description**                                                                                                                                                                  | **No.** | **MOC** |
 |-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|---------|
-| sessionID   | Identifier of the current Remote Management Session                                                                                                                              | 1       | M       |
+| sessionId   | Identifier of the current Remote Management Session                                                                                                                              | 1       | M       |
 | stopOnError | Boolean value which determines whether the Local Agent shall continue sending the remaining APDU on Secure Element errors. If this property is not set, a true value is assumed. | 1       | O       |
 | listOfCAPDU | An ordered list of APDU to send to the Secure Element. Each APDU are encoded as hexadecimal string.                                                                              | 1       | M       |
 
@@ -752,7 +752,7 @@ properties
 
 | **Name**    | **Description**                                                                                      | **No.** | **MOC** |
 |-------------|------------------------------------------------------------------------------------------------------|---------|---------|
-| sessionID   | Identifier of the current Remote Management Session                                                  | 1       | M       |
+| sessionId   | Identifier of the current Remote Management Session                                                  | 1       | M       |
 | listOfRAPDU | An ordered list of APDU response of the Secure Element. Each APDU are encoded as hexadecimal string. | 1       | M       |
 
 For each APDU send to the Secure Element, the Local Agent shall add the
@@ -778,7 +778,7 @@ Command properties
 
 | **Name**              | **Description**                                          | **No.** | **MOC** |
 |-----------------------|----------------------------------------------------------|---------|---------|
-| sessionID             | Identifier of the current Remote Management Session      | 1       | M       |
+| sessionId             | Identifier of the current Remote Management Session      | 1       | M       |
 | deviceAppNotification | An UTF-8 string to be notified to the Device Application | 1       | M       |
 
 RAM Stop Command Message
@@ -804,7 +804,7 @@ properties
 
 | **Name**  | **Description**                                                                                                           | **No.** | **MOC** |
 |-----------|---------------------------------------------------------------------------------------------------------------------------|---------|---------|
-| sessionID | Identifier of the current Remote Management Session                                                                       | 1       | M       |
+| sessionId | Identifier of the current Remote Management Session                                                                       | 1       | M       |
 | statusMsg | An UTF-8 string which details the final status of the processing. If not provided an empty string value shall be assumed. | 1       | O       |
 
 The Local Agent shall be sent the statusMsg to the Device Application.
@@ -828,7 +828,7 @@ Management Session and HTTP messages
 ------------------------------------
 
 HTTP messages are attached with a Management Session based on the
-sessionID. The sessionID is explicitly inserted in each HTTP request and
+sessionId. The sessionId is explicitly inserted in each HTTP request and
 implicitly determined for HTTP response based on the client-server
 paradigm of the HTTP protocol.
 
@@ -920,9 +920,9 @@ binding
 </thead>
 <tbody>
 <tr class="odd">
-<td>sessionID</td>
+<td>sessionId</td>
 <td>HTTP</td>
-<td>A mandatory key/value query part of Handshake Endpoint. The key SHALL be "sessionID".</td>
+<td>A mandatory key/value query part of Handshake Endpoint. The key SHALL be "sessionId".</td>
 </tr>
 <tr class="even">
 <td>secureElements</td>
@@ -952,7 +952,7 @@ binding
 
 If the HTTP Server could not fulfill the client proposal, it SHALL
 respond with a 406 Not Acceptable response code, and the HTTP Server
-SHOULD respond with a 404 Not Found if the sessionID is unknown on
+SHOULD respond with a 404 Not Found if the sessionId is unknown on
 server side. Otherwise, the HTTP server SHALL respond with a 200 Ok
 response with an HTTP body that SHALL contains a JSON object with a
 "ramHandshakeResponse" element.
@@ -965,7 +965,7 @@ binding
 
 | **Property Name**       | **level** | **Detail**                                                                                                            |
 |-------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------|
-| sessionID               | HTTP      | Implicitly determined from the HTTP request                                                                           |
+| sessionId               | HTTP      | Implicitly determined from the HTTP request                                                                           |
 | chosenSecureElement     | JSON      | Mapped to a mandatory "chosenSecureElement" element of "ramHandshake" that contains the selected Secure Element.      |
 | chosenTransportProtocol | JSON      | Mapped to a mandatory "chosenTransportProtocol" element of "ramHandshake" that contains the selected Transport layer. |
 | chosenDataFormat        | JSON      | Mapped to a mandatory "chosenDataFormat" element of "ramHandshake" that contains the selected Data Format layer.      |
@@ -978,8 +978,8 @@ Binding of the Remote Management
 
 During the Remote Management step, the HTTP client SHALL poll the
 server. The poll request SHALL be an HTTP POST message that contains the
-sessionID in a key/value format in the query part of the Remote
-Management Endpoint, using "sessionID" as key.
+sessionId in a key/value format in the query part of the Remote
+Management Endpoint, using "sessionId" as key.
 
 Whenever some Message Responses shall be sent to the HTTP server, the
 HTTP client SHALL add them to the polling request in a JSON body with a
@@ -998,7 +998,7 @@ binding
 
 | **Property Name** | **level** | **Detail**                                                                                                                                                                  |
 |-------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| sessionID         | HTTP      | A mandatory key/value query part of Remote Management Endpoint. The key SHALL be "sessionID".                                                                               |
+| sessionId         | HTTP      | A mandatory key/value query part of Remote Management Endpoint. The key SHALL be "sessionId".                                                                               |
 | listOfRAPDU       | JSON      | A mandatory element of "RemoteManagementMsg" mapped to a "listofRAPDU" element that is a JSON array of APDU response. Each APDU response are encoded as hexadecimal string. |
 
 ### Binding of the HTTP Response for Remote Management Endpoint
@@ -1006,7 +1006,7 @@ binding
 On any error detected in the JSON properties of the HTTP request, the
 Remote Agent SHALL immediately ends the Management Session by sending
 the RAM Stop Command Message. The Remote Agent SHOULD respond with an
-HTTP 404 Not Found if the sessionID is unknown on server side.
+HTTP 404 Not Found if the sessionId is unknown on server side.
 
 Otherwise, the Remote Agent SHALL respond with an HTTP 200 Ok response.
 The HTTP response MAY include a JSON object as HTTP body with a
@@ -1039,7 +1039,7 @@ binding
 
 | **Property Name** | **HTTP or JSON** | **Detail**                                  |
 |-------------------|------------------|---------------------------------------------|
-| sessionID         | HTTP             | Implicitly determined from the HTTP request |
+| sessionId         | HTTP             | Implicitly determined from the HTTP request |
 
 ### SE RAM Command binding
 
@@ -1053,7 +1053,7 @@ Command binding
 
 | **Property Name** | **HTTP or JSON** | **Detail**                                                                                                                                    |
 |-------------------|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| sessionID         | HTTP             | Implicitly determined from the HTTP request                                                                                                   |
+| sessionId         | HTTP             | Implicitly determined from the HTTP request                                                                                                   |
 | stopOnError       | JSON             | Mapped to a "stopOnError" element of a "ramCommand" item that is a boolean value with a default "true" value.                                 |
 | listOfCAPDU       | JSON             | Mapped to a "listOfCAPDU" element of a "ramCommand" item that is an array of UTF-8 string that represent APDU command encoded in hexadecimal. |
 
@@ -1189,17 +1189,17 @@ resuming\\
 \\ communications in case of a data exchange failure\<br\> \<br\> The
 HTTP client shall\\
 
-\\ used the sessionID to allow the HTTP server to track the remote
+\\ used the sessionId to allow the HTTP server to track the remote
 management. The\\
 
-\\ HTTP client shall reused the sessionID in all subsequent HTTP request
+\\ HTTP client shall reused the sessionId in all subsequent HTTP request
 to the\\
 
 \\ HTTP server"
 
 parameters:
 
-\- name: sessionID
+\- name: sessionId
 
 in: query
 
@@ -1277,7 +1277,7 @@ send the next remote\\
 
 parameters:
 
-\- name: sessionID
+\- name: sessionId
 
 in: query
 

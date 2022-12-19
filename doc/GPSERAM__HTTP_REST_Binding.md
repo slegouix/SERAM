@@ -17,7 +17,7 @@ Management Session and HTTP messages
 ------------------------------------
 
 HTTP messages are attached with a Management Session based on the
-sessionID. The sessionID is explicitly inserted in each HTTP request and
+sessionId. The sessionId is explicitly inserted in each HTTP request and
 implicitly determined for HTTP response based on the client-server
 paradigm of the HTTP protocol.
 
@@ -97,7 +97,7 @@ element.
 
 | **Property Name**           | **HTTP or JSON** | **Detail**                                                                                                                          |
 |-----------------------------|------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| sessionID                   | HTTP             | A mandatory key/value query part of Handshake Endpoint. The key SHALL be "sessionID".                                               |
+| sessionId                   | HTTP             | A mandatory key/value query part of Handshake Endpoint. The key SHALL be "sessionId".                                               |
 | secureElements              | JSON             | Mapped to a mandatory "secureElement" array element of "ramHandshake".                                                              |
 | supportedTransportProtocols | JSON             | Mapped to a mandatory "secureTransportProtocols" array element of "ramHandshake".<br>If not provided, ["HTTPS"] is assumed.         |
 | supportedDataFormats        | JSON             | Mapped to a non-empty "supportedDataFormats" array element of "ramHandshake".<br>If not provided, ["application/json"] is assumed.  |
@@ -105,7 +105,7 @@ element.
 
 If the HTTP Server could not fulfill the client proposal, it SHALL
 respond with a 406 Not Acceptable response code, and the HTTP Server
-SHOULD respond with a 404 Not Found if the sessionID is unknown on
+SHOULD respond with a 404 Not Found if the sessionId is unknown on
 server side. Otherwise, the HTTP server SHALL respond with a 200 Ok
 response with an HTTP body that SHALL contains a JSON object with a
 "ramHandshakeResponse" element.
@@ -114,7 +114,7 @@ Properties of the Handshake Response SHALL be bound according to the next table.
 
 | **Property Name**       | **level** | **Detail**                                                                                                            |
 |-------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------|
-| sessionID               | HTTP      | Implicitly determined from the HTTP request                                                                           |
+| sessionId               | HTTP      | Implicitly determined from the HTTP request                                                                           |
 | chosenSecureElement     | JSON      | Mapped to a mandatory "chosenSecureElement" element of "ramHandshake" that contains the selected Secure Element.      |
 | chosenTransportProtocol | JSON      | Mapped to a mandatory "chosenTransportProtocol" element of "ramHandshake" that contains the selected Transport layer. |
 | chosenDataFormat        | JSON      | Mapped to a mandatory "chosenDataFormat" element of "ramHandshake" that contains the selected Data Format layer.      |
@@ -127,14 +127,14 @@ Binding of the Remote Management
 
 During the Remote Management step, the HTTP client SHALL poll the
 server. The poll request SHALL be an HTTP POST message that contains the
-sessionID in a key/value format in the query part of the Remote
-Management Endpoint, using "sessionID" as key.
+sessionId in a key/value format in the query part of the Remote
+Management Endpoint, using "sessionId" as key.
 
 Whenever some Message Responses shall be sent to the HTTP server, the
 HTTP client SHALL add them to the polling request in a JSON body with a
 "RemoteManagementMsg" element which is an JSON array. This item SHALL
 NOT be empty. Items of the "RemoteManagementMsg" SHALL contains a
-"ramResponseType" element with a value of "seRAMResponse".
+"ramResponseType" element with a value of "seRamResponse".
 
 ### SE RAM Response Binding
 
@@ -144,7 +144,7 @@ the next table.
 
 | **Property Name** | **level** | **Detail**                                                                                                                                                                  |
 |-------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| sessionID         | HTTP      | A mandatory key/value query part of Remote Management Endpoint. The key SHALL be "sessionID".                                                                               |
+| sessionId         | HTTP      | A mandatory key/value query part of Remote Management Endpoint. The key SHALL be "sessionId".                                                                               |
 | listOfRAPDU       | JSON      | A mandatory element of "RemoteManagementMsg" mapped to a "listofRAPDU" element that is a JSON array of APDU response. Each APDU response are encoded as hexadecimal string. |
 
 ### Binding of the HTTP Response for Remote Management Endpoint
@@ -152,7 +152,7 @@ the next table.
 On any error detected in the JSON properties of the HTTP request, the
 Remote Agent SHALL immediately ends the Management Session by sending
 the RAM Stop Command Message. The Remote Agent SHOULD respond with an
-HTTP 404 Not Found if the sessionID is unknown on server side.
+HTTP 404 Not Found if the sessionId is unknown on server side.
 
 Otherwise, the Remote Agent SHALL respond with an HTTP 200 Ok response.
 The HTTP response MAY include a JSON object as HTTP body with a
@@ -182,7 +182,7 @@ be bound according to the next table.
 
 | **Property Name** | **HTTP or JSON** | **Detail**                                  |
 |-------------------|------------------|---------------------------------------------|
-| sessionID         | HTTP             | Implicitly determined from the HTTP request |
+| sessionId         | HTTP             | Implicitly determined from the HTTP request |
 
 ### SE RAM Command binding
 
@@ -193,7 +193,7 @@ to the next table.
 
 | **Property Name** | **HTTP or JSON** | **Detail**                                                                                                                                    |
 |-------------------|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| sessionID         | HTTP             | Implicitly determined from the HTTP request                                                                                                   |
+| sessionId         | HTTP             | Implicitly determined from the HTTP request                                                                                                   |
 | stopOnError       | JSON             | Mapped to a "stopOnError" element of a "ramCommand" item that is a boolean value with a default "true" value.                                 |
 | listOfCAPDU       | JSON             | Mapped to a "listOfCAPDU" element of a "ramCommand" item that is an array of UTF-8 string that represent APDU command encoded in hexadecimal. |
 
