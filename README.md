@@ -23,5 +23,5 @@ Protocol binding
 For **GP SERAM - HTTP REST Binding** please refer to:
 
 * [HTTP REST Binding - OpenAPI specification](spec/gpseram.yaml) ([Viewer](https://slegouix.github.io/SERAM/))
-* [HTTP REST Binding - explanation](doc/GPSERAM_HTTP_REST_Binding.md)
+* [HTTP REST Binding - explanation](doc/GPSERAM__HTTP_REST_Binding.md)
 
