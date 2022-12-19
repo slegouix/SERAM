@@ -1,10 +1,10 @@
-GP SERAM v2
-===========
+GP SERAM
+========
 
 Introduction
 ------------
 
-The aim of this GP SERAM v2 is to define an administration protocol to 
+The aim of this GP SERAM is to define an administration protocol to 
 perform remote management of applications residing on any type of Secure
 Element in a device (e.g. mobile phone, tablet...). Remote management
 means the delivery of management commands to a Secure Element hosted in
@@ -15,13 +15,13 @@ payment applications, transit applications, or access applications.
 
 To understand the protocol, please, refer to:
 
-* [GP SERAM Protocol Overview](doc/GPSERAM_v2__Overview.md)
+* [GP SERAM Protocol Overview](doc/GPSERAM__Overview.md)
 
 Protocol binding
 ----------------
 
 For **GP SERAM - HTTP REST Binding** please refer to:
 
-* [HTTP REST Binding - OpenAPI specification](spec/gpseram_v2.yaml) ([Viewer](https://slegouix.github.io/SERAM/))
-* [HTTP REST Binding - explanation](doc/GPSERAM_v2_HTTP_REST_Binding.md)
+* [HTTP REST Binding - OpenAPI specification](spec/gpseram.yaml) ([Viewer](https://slegouix.github.io/SERAM/))
+* [HTTP REST Binding - explanation](doc/GPSERAM_HTTP_REST_Binding.md)
 
