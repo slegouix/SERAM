@@ -72,6 +72,10 @@ paths:
           application/json:
             schema:
               $ref: 'messages.yaml#/ramHandshakeCommand'
+            examples:
+              handshakeRequest:
+                summary: Sample of an HTTP request for Handshake Command
+                externalValue: 'examples/handshakeRequest.txt'
       responses:
         '200':
           description: OK
@@ -79,6 +83,10 @@ paths:
             application/json:
               schema:
                 $ref: 'messages.yaml#/ramHandshakeResponse'
+              examples:
+                handshakeResponse:
+                  summary: Sample of an HTTP response for handshake Response
+                  externalValue: 'examples/handshakeResponse.txt'
         '404':
           description: Session id not found
         '406':
@@ -107,6 +115,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/remoteManagementMsg'
+            examples:
+              pollingRequest:
+                summary: sample of an HTTP polling request
+                externalValue: 'examples/pollingRequest.txt'
+              seRamResponseRequest:
+                summary: sample of an HTTP request with SE RAM responses
+                externalValue: 'examples/pollingRequest.txt'
       responses:
         '200':
           description: OK
@@ -114,6 +129,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/remoteManagementOrder'
+              examples:
+                pollingResponse:
+                  summary: sample of an HTTP polling response
+                  externalValue: 'examples/pollingResponse.txt'
+                startCommandResponse:
+                  summary: sample of an HTTP response with Start Command
+                  externalValue: 'examples/startCommandResponse.txt'
+                seRamCommandResponse:
+                  summary: sample of an HTTP response with SE RAM Command
+                  externalValue: 'examples/seRamCommandResponse.txt'
+                notificationResponse:
+                  summary: sample of an HTTP response with Notification Command
+                  externalValue: 'examples/notificationCommandResponse.txt'
+                stopCommandResponse:
+                  summary: sample of an HTTP response with Stop Command
+                  externalValue: 'examples/stopCommandResponse.txt'
         '404':
           description: Session id not found
         '500':

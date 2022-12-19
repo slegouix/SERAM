@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "ramCommands": [
+    {
+      "ramCommandType": "notificationCommand",
+      "deviceAppNotification": "step1/action2/OK"
+    }
+  ]
+}

@@ -72,6 +72,10 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ramHandshakeCommand'
+            examples:
+              handshakeRequest:
+                summary: Sample of an HTTP request for Handshake Command
+                externalValue: 'examples/handshakeRequest.txt'
       responses:
         '200':
           description: OK
@@ -79,6 +83,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ramHandshakeResponse'
+              examples:
+                handshakeResponse:
+                  summary: Sample of an HTTP response for handshake Response
+                  externalValue: 'examples/handshakeResponse.txt'
         '404':
           description: Session id not found
         '406':
@@ -107,6 +115,13 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/remoteManagementMsg'
+            examples:
+              pollingRequest:
+                summary: sample of an HTTP polling request
+                externalValue: 'examples/pollingRequest.txt'
+              seRamResponseRequest:
+                summary: sample of an HTTP request with SE RAM responses
+                externalValue: 'examples/pollingRequest.txt'
       responses:
         '200':
           description: OK
@@ -114,6 +129,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/remoteManagementOrder'
+              examples:
+                pollingResponse:
+                  summary: sample of an HTTP polling response
+                  externalValue: 'examples/pollingResponse.txt'
+                startCommandResponse:
+                  summary: sample of an HTTP response with Start Command
+                  externalValue: 'examples/startCommandResponse.txt'
+                seRamCommandResponse:
+                  summary: sample of an HTTP response with SE RAM Command
+                  externalValue: 'examples/seRamCommandResponse.txt'
+                notificationResponse:
+                  summary: sample of an HTTP response with Notification Command
+                  externalValue: 'examples/notificationCommandResponse.txt'
+                stopCommandResponse:
+                  summary: sample of an HTTP response with Stop Command
+                  externalValue: 'examples/stopCommandResponse.txt'
         '404':
           description: Session id not found
         '500':
@@ -149,7 +180,7 @@ components:
 
     remoteManagementMsg:
       description: >-
-        This is the data model for the remote management containing SE ram
+        This is the data model for the remote management containing SE RAM
         responses. In case of polling message, or for the first polling
         message, only the localAgentStatus is included.
       type: object
@@ -432,7 +463,7 @@ components:
       example: '0f96af97-f879-45a2-a011-ee7439df3804'
 
     transportProtocol:
-      description: A transport protocol to exchange GPSERAM Messages.
+      description: A transport protocol to exchange GP SERAM Messages.
       type: string
       enum:
         - HTTPS

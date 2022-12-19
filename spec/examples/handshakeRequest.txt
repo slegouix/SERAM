@@ -1,0 +1,15 @@
+GET /handshake?sessionID=6f68aa94-0996-4a7a-8ada-5da74fd0eddf HTTP/1.1
+Content-Type: application/json
+
+{
+  "secureElements": [
+    {
+      "seType": "eSE",
+      "seId": "89001012012341234012345678901224",
+      "seExtraInfo": "SAM"
+    }
+  ],
+  "supportedTransportProtocols": [ "HTTPS" ],
+  "supportedDataFormats": [ "application/json" ],
+  "supportedVersion": [ "2.0.0" ]
+}
