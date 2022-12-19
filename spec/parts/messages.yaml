@@ -18,18 +18,21 @@
         supportedTransportProtocols:
           description: >-
             A list of Transport Protocol supported by the the Local Agent.
+            If not provided "HTTPS" is assumed.
           type: array
           items:
             $ref: 'attributes.yaml#/transportProtocol'
         supportedDataFormats:
           description: >-
             A list of Transport Data Format supported by the Local Agent.
+            If not provided, "application/json" if assumed.
           type: array
           items:
             $ref: 'attributes.yaml#/dataFormat'
         supportedVersions:
           description: >-
             A list of version of GP SERAM supported by the Local Agent.
+            If not provided, "2.0.0" is assumed.
           type: array
           items:
             $ref: 'attributes.yaml#/version'

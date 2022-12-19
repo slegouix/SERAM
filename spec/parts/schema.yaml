@@ -18,7 +18,8 @@ info:
     server selects the best option and  continue with the selected binding.
 
     This OpenAPI specification is self-documentated. Please refer to the
-    [ GP SERAM github](http://github.com/slegouix/SERAM) for additional information.
+    [GitHub of GP SERAM](http://github.com/slegouix/SERAM) for additional
+    information.
 
   license:
     name: MIT
@@ -88,7 +89,7 @@ paths:
                   summary: Sample of an HTTP response for handshake Response
                   externalValue: 'examples/handshakeResponse.txt'
         '404':
-          description: Session id not found
+          description: sessionId not found
         '406':
           description: HTTP Server could not fulfill the client proposal
         '500':
@@ -100,9 +101,13 @@ paths:
         - seApplicationManagementService
       summary: Method used to respond to a remote management command.
       description: >-
-        This method shall be used by the HTTP client to transmit its response
-        to the HTTP server. <br><br> In response, the HTTP server shall send
-        the next remote management order.
+        During Remote Management Step, this endpoint is used to poll the HTTP
+        server and to exchange Command and Reponses Messages.<br>
+        The Remote Agent SHALL first open the Remote Management Session with a
+        Start Command and terminates it with a Stop Command. During the Remote
+        Management Session, it may send Notification Command or SE RAM
+        Command.<br>
+        The Remote Management Session is identify by the sessionId.<br>
       parameters:
         - name: sessionId
           in: query
@@ -173,7 +178,11 @@ components:
                 C-APDU
             - $ref: 'attributes.yaml#/secureElement'
         ramCommands:
-          description: List of Commands to be executed by the Local Agent.
+          description: >-
+            List of Commands to be executed by the Local Agent. The list SHALL
+            contain at least one Command Message. If the list contains more
+            than one Command Message, the Local Agent SHALL handles them one
+            by one. 
           type: array
           items:
             $ref: 'messages.yaml#/ramCommand'
