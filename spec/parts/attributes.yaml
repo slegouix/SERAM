@@ -21,9 +21,9 @@
           description: >-
             Local Agent SHALL send a PROCESSED status whenever at least one
             RAM command has been executed. On any error processing one of
-            UNAVAILABLE_SE, UNKNOWN_FAILURE, or UNGRANTED_ACCESS SHALL used.
+            UNAVAILABLE_SE, UNKNOWN_FAILURE, or UNGRANTED_ACCESS SHALL be used.
             And the POLLING status SHALL be used for the first HTTP request or
-            is the Remote Agent hasn't sent any Command.
+            if the Remote Agent hasn't sent any Command.
           enum:
             - PROCESSED
             - POLLING
@@ -33,12 +33,15 @@
         executedRamCommands:
           description: >-
             Number of RAM command executed. Value SHALL be set to zero during
-            polling
+            polling.<br>
+            The Remote Agent can determine whether an error occurred if the
+            value differs from the number of commands sent.
           type: integer
         errorMsg:
           description: >-
-            Additional information provided in case of error (status
-            UNAVAILABLE_SE, UNKNOWN_FAILURE, UNGRANDED_ACCESS) that should be
+            Additional information that SHOULD be provided in case of error
+            (i.e. the localAgentStatusEnum is set to UNAVAILABLE_SE,
+            UNKNOWN_FAILURE, or UNGRANDED_ACCESS). This message SHOULD be
             logged for investigation or for legal purpose.
           type: string
 

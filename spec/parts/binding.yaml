@@ -76,7 +76,7 @@ paths:
             examples:
               handshakeRequest:
                 summary: Sample of an HTTP request for Handshake Command
-                externalValue: 'examples/handshakeRequest.txt'
+                externalValue: 'examples/handshakeRequest.json'
       responses:
         '200':
           description: OK
@@ -87,7 +87,7 @@ paths:
               examples:
                 handshakeResponse:
                   summary: Sample of an HTTP response for handshake Response
-                  externalValue: 'examples/handshakeResponse.txt'
+                  externalValue: 'examples/handshakeResponse.json'
         '404':
           description: sessionId not found
         '406':
@@ -123,10 +123,10 @@ paths:
             examples:
               pollingRequest:
                 summary: sample of an HTTP polling request
-                externalValue: 'examples/pollingRequest.txt'
+                externalValue: 'examples/pollingRequest.json'
               seRamResponseRequest:
                 summary: sample of an HTTP request with SE RAM responses
-                externalValue: 'examples/pollingRequest.txt'
+                externalValue: 'examples/pollingRequest.json'
       responses:
         '200':
           description: OK
@@ -137,19 +137,19 @@ paths:
               examples:
                 pollingResponse:
                   summary: sample of an HTTP polling response
-                  externalValue: 'examples/pollingResponse.txt'
+                  externalValue: 'examples/pollingResponse.json'
                 startCommandResponse:
                   summary: sample of an HTTP response with Start Command
-                  externalValue: 'examples/startCommandResponse.txt'
+                  externalValue: 'examples/startCommandResponse.json'
                 seRamCommandResponse:
                   summary: sample of an HTTP response with SE RAM Command
-                  externalValue: 'examples/seRamCommandResponse.txt'
+                  externalValue: 'examples/seRamCommandResponse.json'
                 notificationResponse:
                   summary: sample of an HTTP response with Notification Command
-                  externalValue: 'examples/notificationCommandResponse.txt'
+                  externalValue: 'examples/notificationCommandResponse.json'
                 stopCommandResponse:
                   summary: sample of an HTTP response with Stop Command
-                  externalValue: 'examples/stopCommandResponse.txt'
+                  externalValue: 'examples/stopCommandResponse.json'
         '404':
           description: Session id not found
         '500':
