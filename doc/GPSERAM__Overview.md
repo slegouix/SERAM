@@ -97,7 +97,7 @@ The attributes which are negotiate are:
 
 To allow the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) to track the [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) the [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) provides a [sessionId](GPSERAM__TerminologyAndDefinitions.md#sessionId) that shall be reused in all subsequent exchanges as defined by the selected [Protocol Binding](GPSERAM__TerminologyAndDefinitions.md#ProtocolBinding).
 
-The [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) shall be performed using the *HTTP REST Protocol Binding*.
+The [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) shall be performed using the *HTTP REST* [Protocol Binding](GPSERAM__TerminologyAndDefinitions.md#ProtocolBinding).
 
 ### Remote Management Session Step
 
