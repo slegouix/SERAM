@@ -37,7 +37,7 @@ The [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) may fine-t
 As describes in [RFC6202](https://www.rfc-editor.org/rfc/rfc6202.html), the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) MAY use HTTP long polling mechanism and wait a certain period of time before sending the void HTTP response.
 [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) SHOULD NOT used period of time beyond 30 seconds and [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) SHOULD at least support latency of 30 seconds between HTTP request and HTTP response.
 
-![HTTP polling](images/image11.png)
+![HTTP polling](images/GP_SERAM__HTTP_Polling.png)
 
 Message Pipelining
 ------------------

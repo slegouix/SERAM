@@ -5,7 +5,7 @@ This specification defined a protocol that allows a [Device Application](GPSERAM
 
 The following figure present the generic architecture of GP SERAM and its environment. All part in blue is defined in this specification.
 
-![Architecture Overview](images/image4.png)
+![Architecture Overview](images/GP_SERAM__Architecture_Overview.png)
 
 In this architecture, a [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) and a [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) manage the protocol to allow the [Management Platform](GPSERAM__TerminologyAndDefinitions.md#ManagementPlatform) to interact with a [Device Application](GPSERAM__TerminologyAndDefinitions.md#DeviceApplication) and the [Secure Element](GPSERAM__TerminologyAndDefinitions.md#SecureElement).
 
@@ -22,7 +22,7 @@ Protocol design
 
 GP SERAM is a message-oriented protocol which used the following protocol stack:
 
-![Protocol layers](images/image5.png)
+![Protocol layers](images/GP_SERAM__Protocol_layers.png)
 
 [Messages](GPSERAM__TerminologyAndDefinitions.md#Message) are the data exchanged between the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) and the [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent). The definition, the meaning and sequency of [Messages](GPSERAM__TerminologyAndDefinitions.md#Message) are states below in the [Messages section](#messages).
 
@@ -48,7 +48,7 @@ To synchronize the management process, a [Device Application](GPSERAM__Terminolo
 
 The timing frame during which it is performed some management tasks that are associated with one sessionId is called the [Management Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession).
 
-![Management Session](images/image6.png)
+![Management Session](images/GP_SERAM__Management_Session.png)
 
 The [Management Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession) is started by the [Device Application](GPSERAM__TerminologyAndDefinitions.md#DeviceApplication) and is then controlled until its end by the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent).
 
@@ -56,13 +56,13 @@ The [Management Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession
 
 As shown by the next figure, the protocol has three steps. First the [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) is triggered by the [Device Application](GPSERAM__TerminologyAndDefinitions.md#DeviceApplication) with the [sessionId](GPSERAM__TerminologyAndDefinitions.md#sessionId) and the [RA Endpoint](GPSERAM__TerminologyAndDefinitions.md#RAEndpoint). It then negotiates the [Data Format](GPSERAM__TerminologyAndDefinitions.md#DataFormat) and [Transport](GPSERAM__TerminologyAndDefinitions.md#Transport) protocol to use with the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent). Finally, the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) make the task required for the [Management Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession).
 
-![Protocol Steps](images/image7.png)
+![Protocol Steps](images/GP_SERAM__Protocol_Steps.png)
 
 Most of the [Initialization](GPSERAM__TerminologyAndDefinitions.md#Initialization) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) is out of the scope of this document.
 
 During the [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step), the [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) perform a protocol negotiation with the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent), by sending its capabilities, the session identifier, and a list of manageable [Secure Element](GPSERAM__TerminologyAndDefinitions.md#SecureElement). A [Protocol Binding](GPSERAM__TerminologyAndDefinitions.md#ProtocolBinding) to be used for the next step is then selected.
 
-Next, the [Management Platform](GPSERAM__TerminologyAndDefinitions.md#ManagementPlatform) starts a [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) by sending a *Start* [Command](GPSERAM__TerminologyAndDefinitions.md#Command). During the [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession), the [Management Platform](GPSERAM__TerminologyAndDefinitions.md#ManagementPlatform) may send *APDUs* to the [Secure Element](GPSERAM__TerminologyAndDefinitions.md#SecureElement), or send notifications to the [Device Application](GPSERAM__TerminologyAndDefinitions.md#DeviceApplication). The end of the [Management Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession) is announced by a *Stop* [Command](GPSERAM__TerminologyAndDefinitions.md#Command) form the [Management Platform](GPSERAM__TerminologyAndDefinitions.md#ManagementPlatform).
+Next, the [Management Platform](GPSERAM__TerminologyAndDefinitions.md#ManagementPlatform) starts a [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) by sending a *Start* [Command](GPSERAM__TerminologyAndDefinitions.md#Command). During the [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange), the [Management Platform](GPSERAM__TerminologyAndDefinitions.md#ManagementPlatform) may send *APDUs* to the [Secure Element](GPSERAM__TerminologyAndDefinitions.md#SecureElement), or send notifications to the [Device Application](GPSERAM__TerminologyAndDefinitions.md#DeviceApplication). The end of the [Management Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession) is announced by a *Stop* [Command](GPSERAM__TerminologyAndDefinitions.md#Command) form the [Management Platform](GPSERAM__TerminologyAndDefinitions.md#ManagementPlatform).
 
 Protocol Steps details
 ----------------------
@@ -95,26 +95,26 @@ The attributes which are negotiate are:
 
 -   The version of the protocol
 
-To allow the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) to track the [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) the [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) provides a [sessionId](GPSERAM__TerminologyAndDefinitions.md#sessionId) that shall be reused in all subsequent exchanges as defined by the selected [Protocol Binding](GPSERAM__TerminologyAndDefinitions.md#ProtocolBinding).
+To allow the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) to track the [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange) the [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) provides a [sessionId](GPSERAM__TerminologyAndDefinitions.md#sessionId) that shall be reused in all subsequent exchanges as defined by the selected [Protocol Binding](GPSERAM__TerminologyAndDefinitions.md#ProtocolBinding).
 
 The [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) shall be performed using the *HTTP REST* [Protocol Binding](GPSERAM__TerminologyAndDefinitions.md#ProtocolBinding).
 
-### Remote Management Session Step
+### Command Exchange Step
 
-During the [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step), the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) performs a series of actions by sending [Commands](GPSERAM__TerminologyAndDefinitions.md#Command) to the [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent). A *remoteManagementOrder* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) sent by the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) may carry one or more [Command](GPSERAM__TerminologyAndDefinitions.md#Command). Similary, a *remoteManagementMsg* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) from [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) may carry one or more [Response](GPSERAM__TerminologyAndDefinitions.md#Response). [Messages](GPSERAM__TerminologyAndDefinitions.md#Message) which are exchanges during this [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) shall use the [Protocol Binding](GPSERAM__TerminologyAndDefinitions.md#ProtocolBinding) which has been selected during the [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step).
+During the [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange) [Step](GPSERAM__TerminologyAndDefinitions.md#Step), the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) performs a series of actions by sending [Commands](GPSERAM__TerminologyAndDefinitions.md#Command) to the [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent). A *remoteManagementOrder* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) sent by the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) may carry one or more [Command](GPSERAM__TerminologyAndDefinitions.md#Command). Similary, a *remoteManagementMsg* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) from [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) may carry one or more [Response](GPSERAM__TerminologyAndDefinitions.md#Response). [Messages](GPSERAM__TerminologyAndDefinitions.md#Message) which are exchanges during this [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) shall use the [Protocol Binding](GPSERAM__TerminologyAndDefinitions.md#ProtocolBinding) which has been selected during the [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step).
 
-![Remote Agent processing during Remote Management Session](images/image8.png)
+![Remote Agent processing during Command Exchange](images/GP_SERAM__Remote_Agent_processing_during_Command_Exchange.png)
 
-As shown by the diagram, the first and last [Command](GPSERAM__TerminologyAndDefinitions.md#Command) of the [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) is respectively the *Start* [Command](GPSERAM__TerminologyAndDefinitions.md#Command) and *Stop* [Command](GPSERAM__TerminologyAndDefinitions.md#Command). Other *RAM* [Commands](GPSERAM__TerminologyAndDefinitions.md#Command) are used to send *APDUs* to the [Secure Element](GPSERAM__TerminologyAndDefinitions.md#SecureElement), or *Notifications* to the [Device Application](GPSERAM__TerminologyAndDefinitions.md#DeviceApplication). Only the *Start* and *Stop* [Commands](GPSERAM__TerminologyAndDefinitions.md#Command) are mandatory.
+As shown by the diagram, the first and last [Command](GPSERAM__TerminologyAndDefinitions.md#Command) of the [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) is respectively the *Start* [Command](GPSERAM__TerminologyAndDefinitions.md#Command) and *Stop* [Command](GPSERAM__TerminologyAndDefinitions.md#Command). Other *RAM* [Commands](GPSERAM__TerminologyAndDefinitions.md#Command) are used to send *APDUs* to the [Secure Element](GPSERAM__TerminologyAndDefinitions.md#SecureElement), or *Notifications* to the [Device Application](GPSERAM__TerminologyAndDefinitions.md#DeviceApplication). Only the *Start* and *Stop* [Commands](GPSERAM__TerminologyAndDefinitions.md#Command) are mandatory.
 
 The [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) processed each [Command](GPSERAM__TerminologyAndDefinitions.md#Command) and if required send a [Response](GPSERAM__TerminologyAndDefinitions.md#Response).
 
 Protocol overview diagram
 -------------------------
 
-The following sequence diagram resumes the main exchanges during a [Management Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession). In the diagram the exchanges during the [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) are illustrated with the two types of *RAM* [Command](GPSERAM__TerminologyAndDefinitions.md#Command) that can be sent by a [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) after the *Start* [Command](GPSERAM__TerminologyAndDefinitions.md#Command) and until the *Stop* [Command](GPSERAM__TerminologyAndDefinitions.md#Command).
+The following sequence diagram resumes the main exchanges during a [Management Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession). In the diagram the exchanges during the [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) are illustrated with the two types of *RAM* [Command](GPSERAM__TerminologyAndDefinitions.md#Command) that can be sent by a [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) after the *Start* [Command](GPSERAM__TerminologyAndDefinitions.md#Command) and until the *Stop* [Command](GPSERAM__TerminologyAndDefinitions.md#Command).
 
-![Protocol overview](images/image9.png)
+![Protocol overview](images/GP_SERAM__Protocol_overview.png)
 
 Messages
 ========
