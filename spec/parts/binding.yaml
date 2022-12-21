@@ -101,13 +101,15 @@ paths:
         - seApplicationManagementService
       summary: Method used to respond to a remote management command.
       description: >-
-        During Remote Management Step, this endpoint is used to poll the HTTP
-        server and to exchange Command and Reponses Messages.<br>
-        The Remote Agent SHALL first open the Remote Management Session with a
-        Start Command and terminates it with a Stop Command. During the Remote
-        Management Session, it may send Notification Command or SE RAM
-        Command.<br>
-        The Remote Management Session is identify by the sessionId.<br>
+        During Command Exchange Step, this endpoint is used to poll the HTTP
+        server and to exchange Command and Reponse Messages.<br>
+        The Remote Agent SHALL first sent a Start Command and SHALL uses
+        the Stop Command to terminate Management Session. During the Command
+        Exchange Step, it may send Notification Command or SE RAM Command to
+        the Local Agent.<br>
+        <br>
+        The Remote Management Session is identify by the sessionId
+        parameter.<br>
       parameters:
         - name: sessionId
           in: query

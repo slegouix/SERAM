@@ -101,13 +101,15 @@ paths:
         - seApplicationManagementService
       summary: Method used to respond to a remote management command.
       description: >-
-        During Remote Management Step, this endpoint is used to poll the HTTP
-        server and to exchange Command and Reponses Messages.<br>
-        The Remote Agent SHALL first open the Remote Management Session with a
-        Start Command and terminates it with a Stop Command. During the Remote
-        Management Session, it may send Notification Command or SE RAM
-        Command.<br>
-        The Remote Management Session is identify by the sessionId.<br>
+        During Command Exchange Step, this endpoint is used to poll the HTTP
+        server and to exchange Command and Reponse Messages.<br>
+        The Remote Agent SHALL first sent a Start Command and SHALL uses
+        the Stop Command to terminate Management Session. During the Command
+        Exchange Step, it may send Notification Command or SE RAM Command to
+        the Local Agent.<br>
+        <br>
+        The Remote Management Session is identify by the sessionId
+        parameter.<br>
       parameters:
         - name: sessionId
           in: query
@@ -154,6 +156,9 @@ paths:
           description: Session id not found
         '500':
           description: Unknown server error
+
+components:
+  schemas:
 
     ramHandshakeCommand:
       description: >-
@@ -274,12 +279,13 @@ paths:
             $ref: '#/components/schemas/ramResponse'
 
     ramCommand:
-      description: "Command Messages are sent by the Remote Agent and shall\
-        \ be executed by the Local Agent."
+      description: >-
+        Command Messages are sent by the Remote Agent and shall be executed by
+        the Local Agent.
       required:
         - ramCommandType
       discriminator:
-        propertyName: "ramCommandType"
+        propertyName: ramCommandType
         mapping:
             ramStartCommand: '#/components/schemas/ramStartCommand'
             seRamCommand: '#/components/schemas/seRamCommand'
@@ -315,7 +321,7 @@ paths:
           69xx or 68xx) are valid APDU response that SHALL be inserted in the
           SE RAM Response. If the stopOnError flag of the SE RAM Command is
           set to 'true', the Local Agent SHALL not execute any remaining APDU
-          command after an error APDU response (i.e. 69xx)."
+          command after an error APDU response (i.e. 69xx).
       - $ref: '#/components/schemas/ramCommand'
       - required:
         - 'listOfCAPDU'

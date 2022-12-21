@@ -1,10 +1,11 @@
     ramCommand:
-      description: "Command Messages are sent by the Remote Agent and shall\
-        \ be executed by the Local Agent."
+      description: >-
+        Command Messages are sent by the Remote Agent and shall be executed by
+        the Local Agent.
       required:
         - ramCommandType
       discriminator:
-        propertyName: "ramCommandType"
+        propertyName: ramCommandType
         mapping:
             ramStartCommand: 'attributes.yaml#/ramStartCommand'
             seRamCommand: 'attributes.yaml#/seRamCommand'
@@ -40,7 +41,7 @@
           69xx or 68xx) are valid APDU response that SHALL be inserted in the
           SE RAM Response. If the stopOnError flag of the SE RAM Command is
           set to 'true', the Local Agent SHALL not execute any remaining APDU
-          command after an error APDU response (i.e. 69xx)."
+          command after an error APDU response (i.e. 69xx).
       - $ref: 'attributes.yaml#/ramCommand'
       - required:
         - 'listOfCAPDU'
