@@ -3,8 +3,8 @@ info:
   title: GP SERAM
   version: 2.0.0
   description: >-
-    This specification allows a Remote Admin Agent to manage a Secure
-    Element thanks to a Local Admin Agent.<br>
+    This specification allows a Remote Agent to manage a Secure Element thanks
+    to a Local Agent.<br>
     <br>
     2 layers is provided here:<br>
     - the data model which details messages which are exchanges. Refer to the
@@ -12,10 +12,10 @@ info:
     - the HTTP REST binding, details in terms of HTTP GET and POST methods.
     Refer to initialization and seApplicationManagement phase below.<br>
     <br>
-    The Remote Admin Agent is acting as an HTTP server and the Local Admin
-    Agent as an HTTP Client. During the initialization phase, the local Admin
-    Agent provides a list of supported data format and transport protocol. The
-    server selects the best option and  continue with the selected binding.
+    The Remote Agent is acting as an HTTP server and the Local Agent as an
+    HTTP Client. During the initialization phase, the local Agent provides a
+    list of supported data format and transport protocol. The server selects
+    the best option and  continue with the selected binding.
 
     This OpenAPI specification is self-documentated. Please refer to the
     [GitHub of GP SERAM](http://github.com/slegouix/SERAM) for additional
@@ -27,8 +27,8 @@ info:
 tags:
   - name: seApplicationManagementService
     description: >-
-      Remote Admin Agent performs the remote management by sending orders to
-      the Local Admin Agent
+      Remote Agent performs the remote management by sending orders to the
+      Local Agent
 servers:
   - url: '{protocol}://{domain}/gp/seram'
     variables:
