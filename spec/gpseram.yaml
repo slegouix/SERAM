@@ -66,13 +66,13 @@ paths:
           in: query
           required: true
           schema:
-            $ref: '#/components/bindings/sessionId'
+            $ref: '#/components/schemas/sessionId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/bindings/ramHandshakeCommand'
+              $ref: '#/components/schemas/ramHandshakeCommand'
             examples:
               handshakeRequest:
                 summary: Sample of an HTTP request for Handshake Command
@@ -83,7 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/bindings/ramHandshakeResponse'
+                $ref: '#/components/schemas/ramHandshakeResponse'
               examples:
                 handshakeResponse:
                   summary: Sample of an HTTP response for handshake Response
@@ -113,7 +113,7 @@ paths:
           in: query
           required: true
           schema:
-            $ref: '#/components/bindings/sessionId'
+            $ref: '#/components/schemas/sessionId'
       requestBody:
         required: true
         content:
@@ -176,7 +176,7 @@ components:
             - description: >-
                 Set the Secure Element the Local Agent SHALL used to send
                 C-APDU
-            - $ref: '#/components/bindings/secureElement'
+            - $ref: '#/components/schemas/secureElement'
         ramCommands:
           description: >-
             List of Commands to be executed by the Local Agent. The list SHALL
@@ -185,7 +185,7 @@ components:
             by one. 
           type: array
           items:
-            $ref: '#/components/bindings/ramCommand'
+            $ref: '#/components/schemas/ramCommand'
 
     remoteManagementMsg:
       description: >-
@@ -199,12 +199,12 @@ components:
         localAgentStatus:
           allOf:
             - description: Status of the Local Agent
-            - $ref: '#/components/bindings/localAgentStatus'
+            - $ref: '#/components/schemas/localAgentStatus'
         ramResponses:
           description: The list of RAM responses
           type: array
           items:
-            $ref: '#/components/bindings/ramResponse'
+            $ref: '#/components/schemas/ramResponse'
 
     ramHandshakeCommand:
       description: >-
@@ -222,28 +222,28 @@ components:
           description: A list of Secure Element available on Local Agent side.
           type: array
           items:
-            $ref: '#/components/bindings/secureElement'
+            $ref: '#/components/schemas/secureElement'
         supportedTransportProtocols:
           description: >-
             A list of Transport Protocol supported by the the Local Agent.
             If not provided "HTTPS" is assumed.
           type: array
           items:
-            $ref: '#/components/bindings/transportProtocol'
+            $ref: '#/components/schemas/transportProtocol'
         supportedDataFormats:
           description: >-
             A list of Transport Data Format supported by the Local Agent.
             If not provided, "application/json" if assumed.
           type: array
           items:
-            $ref: '#/components/bindings/dataFormat'
+            $ref: '#/components/schemas/dataFormat'
         supportedVersions:
           description: >-
             A list of version of GP SERAM supported by the Local Agent.
             If not provided, "2.0.0" is assumed.
           type: array
           items:
-            $ref: '#/components/bindings/version'
+            $ref: '#/components/schemas/version'
 
     ramHandshakeResponse:
       description: >-
@@ -260,16 +260,16 @@ components:
           allOf:
             - description: >-
                The Transport Protocol selected by the Remote Agent.
-            - $ref: '#/components/bindings/transportProtocol'
+            - $ref: '#/components/schemas/transportProtocol'
         chosenDataFormat:
           allOf:
             - description: The Data Protocol selected by the Remote Agent.
-            - $ref: '#/components/bindings/dataFormat'
+            - $ref: '#/components/schemas/dataFormat'
         chosenVersion:
           allOf:
             - description: >-
                 The Version of GP SERAM selected by the Remote Agent
-            - $ref: '#/components/bindings/version'
+            - $ref: '#/components/schemas/version'
 
     ramCommand:
       description: "Command Messages are sent by the Remote Agent and shall\
@@ -279,10 +279,10 @@ components:
       discriminator:
         propertyName: "ramCommandType"
         mapping:
-            ramStartCommand: '#/components/bindings/ramStartCommand'
-            seRamCommand: '#/components/bindings/seRamCommand'
-            notificationCommand : '#/components/bindings/notificationCommand'
-            ramStopCommand : '#/components/bindings/ramStopCommand'
+            ramStartCommand: '#/components/schemas/ramStartCommand'
+            seRamCommand: '#/components/schemas/seRamCommand'
+            notificationCommand : '#/components/schemas/notificationCommand'
+            ramStopCommand : '#/components/schemas/ramStopCommand'
       properties:
         ramCommandType:
           description: >-
@@ -295,7 +295,7 @@ components:
         - description: >-
             The RAM Start Command inform the Local Agent of the start of the
             Remote Management Session by the Remote Agent.
-        - $ref: '#/components/bindings/ramCommand'
+        - $ref: '#/components/schemas/ramCommand'
 
     seRamCommand:
       allOf:
@@ -314,7 +314,7 @@ components:
           SE RAM Response. If the stopOnError flag of the SE RAM Command is
           set to 'true', the Local Agent SHALL not execute any remaining APDU
           command after an error APDU response (i.e. 69xx)."
-      - $ref: '#/components/bindings/ramCommand'
+      - $ref: '#/components/schemas/ramCommand'
       - required:
         - 'listOfCAPDU'
       properties:
@@ -324,7 +324,7 @@ components:
             are encoded as hexadecimal string.
           type: array
           items:
-            $ref: '#/components/bindings/apdu'
+            $ref: '#/components/schemas/apdu'
           example:
             - '00A4040008A00000015100000000'
 
@@ -335,7 +335,7 @@ components:
           notification to the Device Application. The meaning of the
           notification and how it is handled by the Device Application is
           implementation dependent.
-      - $ref: '#/components/bindings/ramCommand'
+      - $ref: '#/components/schemas/ramCommand'
       - required:
           - 'deviceAppNotification'
       properties:
@@ -354,7 +354,7 @@ components:
             the Device Application.<br>
             This Message marks the end of the processing by a Management
             Platform and no further Message will be sent.
-        - $ref: '#/components/bindings/ramCommand'
+        - $ref: '#/components/schemas/ramCommand'
 
     ramResponse:
       description: Response Messages are sent by the Local Agent to the Agent.
@@ -363,7 +363,7 @@ components:
       discriminator:
         propertyName: ramResponseType
         mapping:
-          seRamResponse: '#/components/bindings/seRamResponse'
+          seRamResponse: '#/components/schemas/seRamResponse'
       properties:
         ramResponseType:
           description: >-
@@ -380,7 +380,7 @@ components:
           the associated APDU response to the listOfRAPDU property. If an APDU
           response is not available (e.g. for a SELECT or on error), it shall
           be filled with an empty string.
-      - $ref: '#/components/bindings/ramResponse'
+      - $ref: '#/components/schemas/ramResponse'
       - required:
           - 'listOfRAPDU'
         properties:
@@ -390,7 +390,7 @@ components:
               APDU are encoded as hexadecimal string.
             type: array
             items:
-              $ref: '#/components/bindings/apdu'
+              $ref: '#/components/schemas/apdu'
             example:
               - '9000'
 
