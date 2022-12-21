@@ -21,6 +21,8 @@ Management Session and HTTP messages
 
 HTTP messages are attached with a [Managment Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession) based on the [sessionId](GPSERAM__TerminologyAndDefinitions.md#sessionId). The [sessionId](GPSERAM__TerminologyAndDefinitions.md#sessionId) is explicitly inserted in each HTTP request and implicitly determined for HTTP response based on the client-server paradigm of the HTTP protocol.
 
+![HTTP messages](images/GP_SERAM__HTTP.png)
+
 Implementors MAY uses another HTTP mechanism to reinforce the HTTP session (e.g. HTTP cookies). A [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) SHOULD support HTTP cookies as defined in [RFC6265](https://www.rfc-editor.org/rfc/rfc6265).
 
 HTTP Polling
@@ -61,9 +63,12 @@ Binding of the Remote Management
 
 The *Order* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) SHALL be mapped to an HTTP response  and the associated *Report* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) to the next HTTP Request.
 
+![HTTP messages](images/GP_SERAM__HTTP.png)
+Transmission Errors
+
 The JSON schema for the HTTP request and response during [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) SHALL fullfill the [GP SERAM OpenAPI specification](/spec/gpseram.yaml).
 
-Transmission Errors
+
 -------------------
 
 The [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) and the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) relies on HTTP protocol to their exchanges. Most of the transmission errors will be transparently resumed by the TCP (Transmission Control Protocol) end-to-end stack.
