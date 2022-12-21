@@ -1,6 +1,7 @@
     ramHandshakeCommand:
       description: >-
-        This is the data model for the handshake command.<br>
+        The Handshake Command is the Message used by the Local Agent
+        during the Handshake Step.<br>
         <br>
         If supportedTransportProtocol is not provided, HTTPS is assumed. If
         supportedDataFormat is not provided, application/json is assumed.<br>
@@ -39,8 +40,9 @@
 
     ramHandshakeResponse:
       description: >-
-        The Handshake Response Message is the Message used by the Remote Agent
-        during the Handshake step.<br>
+        The Handshake Response is the Message used by the Remote Agent
+        during the Handshake Step.<br>
+        <br>
         Each value of the chosen properties shall correspond of one supported
         by the Local Agent."
       required:
@@ -63,126 +65,54 @@
                 The Version of GP SERAM selected by the Remote Agent
             - $ref: 'attributes.yaml#/version'
 
-    ramCommand:
-      description: "Command Messages are sent by the Remote Agent and shall\
-        \ be executed by the Local Agent."
-      required:
-        - ramCommandType
-      discriminator:
-        propertyName: "ramCommandType"
-        mapping:
-            ramStartCommand: 'attributes.yaml#/ramStartCommand'
-            seRamCommand: 'attributes.yaml#/seRamCommand'
-            notificationCommand : 'attributes.yaml#/notificationCommand'
-            ramStopCommand : 'attributes.yaml#/ramStopCommand'
+    remoteManagementOrder:
+      description: >-
+        The Remote Agent may used Order Message to select a Secure Element, to
+        send Commands, or to maintain the connection with the Local Agent.<br>
+        <br>
+        All fields are optional.
       properties:
-        ramCommandType:
+        delay:
           description: >-
-            The type of Command Message with authorized values listed in the
-            discrimitator mapping
-          type: string
-
-    ramStartCommand:
-      allOf:
-        - description: >-
-            The RAM Start Command inform the Local Agent of the start of the
-            Remote Management Session by the Remote Agent.
-        - $ref: 'attributes.yaml#/ramCommand'
-
-    seRamCommand:
-      allOf:
-      - description: >-
-          The SE RAM Command Message is used to send APDU to the Secure
-          Element.<br>
-          The Local Agent SHALL send each APDU command of the listOfCAPDU to
-          the Secure Element using the SE Access API. The Local Agent SHALL
-          add each APDU response to the SE RAM Response Message. If an APDU
-          Response is not available, the Local Agent SHALL use an empty
-          string as APDU Response. On any error to transmit an APDU command
-          to the Secure Element, the Local Agent SHALL discard all the
-          remaining APDU commands and SHALL not include any APDU response for
-          the faulty transmission. Any warning or error APDU response (i.e.
-          69xx or 68xx) are valid APDU response that SHALL be inserted in the
-          SE RAM Response. If the stopOnError flag of the SE RAM Command is
-          set to 'true', the Local Agent SHALL not execute any remaining APDU
-          command after an error APDU response (i.e. 69xx)."
-      - $ref: 'attributes.yaml#/ramCommand'
-      - required:
-        - 'listOfCAPDU'
-      properties:
-        listOfCAPDU:
+            Delay in second the device local agent had to wait before sending
+            data to the platform.
+          type: integer
+          default: 1
+        chosenSecureElement:
+          allOf:
+            - description: >-
+                Set the Secure Element the Local Agent SHALL used to send
+                C-APDU
+            - $ref: 'attributes.yaml#/secureElement'
+        ramCommands:
           description: >-
-            An ordered list of APDU to send to the Secure Element. Each APDU
-            are encoded as hexadecimal string.
+            List of Commands to be executed by the Local Agent. The list SHALL
+            contain at least one Command Message. If the list contains more
+            than one Command Message, the Local Agent SHALL handles them one
+            by one. 
           type: array
           items:
-            $ref: 'attributes.yaml#/apdu'
-          example:
-            - '00A4040008A00000015100000000'
+            $ref: 'commands_and_responses.yaml#/ramCommand'
 
-    notificationCommand:
-      allOf:
-      - description: >-
-          The Notification Command Message is used to send processing
-          notification to the Device Application. The meaning of the
-          notification and how it is handled by the Device Application is
-          implementation dependent.
-      - $ref: 'attributes.yaml#/ramCommand'
-      - required:
-          - 'deviceAppNotification'
-      properties:
-        deviceAppNotification:
-          description: >-
-            An UTF-8 string to be notified to the Device Application
-          type: string
-          example: 'step1/action2/OK'
-
-    ramStopCommand:
-      allOf:
-        - description: >-
-            A Remote Agent uses this Command to mark the end of its processing
-            and that no further Message will be sent.<br>
-            The Local Agent shall notify the end of the Management Session to
-            the Device Application.<br>
-            This Message marks the end of the processing by a Management
-            Platform and no further Message will be sent.
-        - $ref: 'attributes.yaml#/ramCommand'
-
-    ramResponse:
-      description: Response Messages are sent by the Local Agent to the Agent.
+    remoteManagementReport:
+      description: >-
+        The Local Agent replies to an Order Message with a Report Message that
+        includes the Responses for the Commands, if any, and to ask the Remote
+        Agent for next Commands.<br>
+        <br>
+        In case of HTTP polling and for the first HTTP message, only the
+        localAgentStatus is included.
+      type: object
       required:
-        - 'ramResponseType'
-      discriminator:
-        propertyName: ramResponseType
-        mapping:
-          seRamResponse: 'attributes.yaml#/seRamResponse'
+        - localAgentStatus
       properties:
-        ramResponseType:
-          description: >-
-            The type of Response Message with authorized values listed in the
-            discrimitator mapping
-          type: string
-
-    seRamResponse:
-      allOf:
-      - description: >-
-          The SE RAM Response Message contains the APDU responses of the
-          Secure Element to a previous SE RAM Command Message.<br>
-          For each APDU send to the Secure Element, the Local Agent shall add
-          the associated APDU response to the listOfRAPDU property. If an APDU
-          response is not available (e.g. for a SELECT or on error), it shall
-          be filled with an empty string.
-      - $ref: 'attributes.yaml#/ramResponse'
-      - required:
-          - 'listOfRAPDU'
-        properties:
-          listOfRAPDU:
-            description: >-
-              An ordered list of APDU response of the Secure Element. Each
-              APDU are encoded as hexadecimal string.
-            type: array
-            items:
-              $ref: 'attributes.yaml#/apdu'
-            example:
-              - '9000'
+        localAgentStatus:
+          allOf:
+            - description: Status of the Local Agent
+            - $ref: 'attributes.yaml#/localAgentStatus'
+        ramResponses:
+          description: The list of RAM responses
+          type: array
+          items:
+            $ref: 'commands_and_responses.yaml#/ramResponse'
 

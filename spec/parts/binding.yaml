@@ -119,7 +119,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/remoteManagementMsg'
+              $ref: 'messages.yaml#/remoteManagementReport'
             examples:
               pollingRequest:
                 summary: sample of an HTTP polling request
@@ -133,7 +133,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/remoteManagementOrder'
+                $ref: 'messages.yaml#/remoteManagementOrder'
               examples:
                 pollingResponse:
                   summary: sample of an HTTP polling response
@@ -154,55 +154,4 @@ paths:
           description: Session id not found
         '500':
           description: Unknown server error
-
-components:
-  schemas:
-
-    remoteManagementOrder:
-      description: >-
-        This is the data model for the remote management order. The Remote
-        Agent may used it to maintain the connection with the Local Agent
-        or to send Message Command to the Local Agent. All fields are
-        optional.
-      properties:
-        delay:
-          description: >-
-            Delay in second the device local agent had to wait before sending
-            data to the platform.
-          type: integer
-          default: 1
-        chosenSecureElement:
-          allOf:
-            - description: >-
-                Set the Secure Element the Local Agent SHALL used to send
-                C-APDU
-            - $ref: 'attributes.yaml#/secureElement'
-        ramCommands:
-          description: >-
-            List of Commands to be executed by the Local Agent. The list SHALL
-            contain at least one Command Message. If the list contains more
-            than one Command Message, the Local Agent SHALL handles them one
-            by one. 
-          type: array
-          items:
-            $ref: 'messages.yaml#/ramCommand'
-
-    remoteManagementMsg:
-      description: >-
-        This is the data model for the remote management containing SE RAM
-        responses. In case of polling message, or for the first polling
-        message, only the localAgentStatus is included.
-      type: object
-      required:
-        - localAgentStatus
-      properties:
-        localAgentStatus:
-          allOf:
-            - description: Status of the Local Agent
-            - $ref: 'attributes.yaml#/localAgentStatus'
-        ramResponses:
-          description: The list of RAM responses
-          type: array
-          items:
-            $ref: 'messages.yaml#/ramResponse'
 

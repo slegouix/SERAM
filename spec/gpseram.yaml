@@ -119,7 +119,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/remoteManagementMsg'
+              $ref: '#/components/schemas/remoteManagementReport'
             examples:
               pollingRequest:
                 summary: sample of an HTTP polling request
@@ -155,60 +155,10 @@ paths:
         '500':
           description: Unknown server error
 
-components:
-  schemas:
-
-    remoteManagementOrder:
-      description: >-
-        This is the data model for the remote management order. The Remote
-        Agent may used it to maintain the connection with the Local Agent
-        or to send Message Command to the Local Agent. All fields are
-        optional.
-      properties:
-        delay:
-          description: >-
-            Delay in second the device local agent had to wait before sending
-            data to the platform.
-          type: integer
-          default: 1
-        chosenSecureElement:
-          allOf:
-            - description: >-
-                Set the Secure Element the Local Agent SHALL used to send
-                C-APDU
-            - $ref: '#/components/schemas/secureElement'
-        ramCommands:
-          description: >-
-            List of Commands to be executed by the Local Agent. The list SHALL
-            contain at least one Command Message. If the list contains more
-            than one Command Message, the Local Agent SHALL handles them one
-            by one. 
-          type: array
-          items:
-            $ref: '#/components/schemas/ramCommand'
-
-    remoteManagementMsg:
-      description: >-
-        This is the data model for the remote management containing SE RAM
-        responses. In case of polling message, or for the first polling
-        message, only the localAgentStatus is included.
-      type: object
-      required:
-        - localAgentStatus
-      properties:
-        localAgentStatus:
-          allOf:
-            - description: Status of the Local Agent
-            - $ref: '#/components/schemas/localAgentStatus'
-        ramResponses:
-          description: The list of RAM responses
-          type: array
-          items:
-            $ref: '#/components/schemas/ramResponse'
-
     ramHandshakeCommand:
       description: >-
-        This is the data model for the handshake command.<br>
+        The Handshake Command is the Message used by the Local Agent
+        during the Handshake Step.<br>
         <br>
         If supportedTransportProtocol is not provided, HTTPS is assumed. If
         supportedDataFormat is not provided, application/json is assumed.<br>
@@ -247,8 +197,9 @@ components:
 
     ramHandshakeResponse:
       description: >-
-        The Handshake Response Message is the Message used by the Remote Agent
-        during the Handshake step.<br>
+        The Handshake Response is the Message used by the Remote Agent
+        during the Handshake Step.<br>
+        <br>
         Each value of the chosen properties shall correspond of one supported
         by the Local Agent."
       required:
@@ -270,6 +221,57 @@ components:
             - description: >-
                 The Version of GP SERAM selected by the Remote Agent
             - $ref: '#/components/schemas/version'
+
+    remoteManagementOrder:
+      description: >-
+        The Remote Agent may used Order Message to select a Secure Element, to
+        send Commands, or to maintain the connection with the Local Agent.<br>
+        <br>
+        All fields are optional.
+      properties:
+        delay:
+          description: >-
+            Delay in second the device local agent had to wait before sending
+            data to the platform.
+          type: integer
+          default: 1
+        chosenSecureElement:
+          allOf:
+            - description: >-
+                Set the Secure Element the Local Agent SHALL used to send
+                C-APDU
+            - $ref: '#/components/schemas/secureElement'
+        ramCommands:
+          description: >-
+            List of Commands to be executed by the Local Agent. The list SHALL
+            contain at least one Command Message. If the list contains more
+            than one Command Message, the Local Agent SHALL handles them one
+            by one. 
+          type: array
+          items:
+            $ref: '#/components/schemas/ramCommand'
+
+    remoteManagementReport:
+      description: >-
+        The Local Agent replies to an Order Message with a Report Message that
+        includes the Responses for the Commands, if any, and to ask the Remote
+        Agent for next Commands.<br>
+        <br>
+        In case of HTTP polling and for the first HTTP message, only the
+        localAgentStatus is included.
+      type: object
+      required:
+        - localAgentStatus
+      properties:
+        localAgentStatus:
+          allOf:
+            - description: Status of the Local Agent
+            - $ref: '#/components/schemas/localAgentStatus'
+        ramResponses:
+          description: The list of RAM responses
+          type: array
+          items:
+            $ref: '#/components/schemas/ramResponse'
 
     ramCommand:
       description: "Command Messages are sent by the Remote Agent and shall\
