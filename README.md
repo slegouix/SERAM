@@ -17,6 +17,9 @@ To understand the protocol, please, refer to:
 
 * [GP SERAM Protocol Overview](doc/GPSERAM__Overview.md)
 
+The documentation also includes [Terminology and Definitions](doc/GPSERAM__Terminology_And_Definitions.md) and
+[References](doc/GPSERAM__References.md).
+
 Protocol binding
 ----------------
 
