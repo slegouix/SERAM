@@ -121,12 +121,12 @@ Messages
 
 The following type of [Messages](GPSERAM__TerminologyAndDefinitions.md#Message) may be exchanged between [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) and [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent):
 
-| Protocol Step     | Messages               | From         | To           |
-|-------------------|------------------------|--------------|--------------|
-| Handshake         | **Handshake Command**  | Local Agent  | Remote Agent |
-| Handshake         | **Handshake Response** | Remote Agent | Local Agent  |
-| Remote Management | **Order**              | Remote Agent | Local Agent  |
-| Remote Management | **Report**             | Local Agent  | Remote Agent |
+| Protocol Step    | Messages               | From         | To           |
+|------------------|------------------------|--------------|--------------|
+| Handshake        | **Handshake Command**  | Local Agent  | Remote Agent |
+| Handshake        | **Handshake Response** | Remote Agent | Local Agent  |
+| Command Exchange | **Order**              | Remote Agent | Local Agent  |
+| Command Exchange | **Report**             | Local Agent  | Remote Agent |
 
 Local Agent Behaviour
 =====================

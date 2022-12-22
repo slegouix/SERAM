@@ -1,7 +1,7 @@
 GP SERAM - HTTP REST Binding
 ============================
 
-This file details the HTTP REST Binding which uses HTTPS as [Transport](GPSERAM__TerminologyAndDefinitions.md#Transport) protocol layer and JSON as [Data Format](GPSERAM__TerminologyAndDefinitions.md#DataFormat) protocol layer.
+This file details the *HTTP REST Binding* which uses HTTPS as [Transport](GPSERAM__TerminologyAndDefinitions.md#Transport) protocol layer and JSON as [Data Format](GPSERAM__TerminologyAndDefinitions.md#DataFormat) protocol layer.
 
 The [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) acts as a HTTP client and the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) as a HTTP server. Each GP SERAM [Message](GPSERAM__TerminologyAndDefinitions.md#Message) may be transmitted in exactly one HTTP message.
 
@@ -44,28 +44,28 @@ As describes in [RFC6202](https://www.rfc-editor.org/rfc/rfc6202.html), the [Rem
 HTTP REST Endpoints
 -------------------
 
-Two endpoints are defined: one to make the [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) and the second to makes the [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step).
+Two endpoints are defined: one to make the [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) and the second to makes the [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange) [Step](GPSERAM__TerminologyAndDefinitions.md#Step).
 
 | **Endpoint**      | **Description**        |
 |-------------------|------------------------|
 | /handshake        | Handshake Step         |
-| /remoteManagement | Remote Management Step |
+| /remoteManagement | Command Exchange Step |
 
-Binding of the Handshake Step
------------------------------
+Handshake Step
+--------------
 
 The *Handshake Command* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) SHALL be mapped to a HTTP POST request and the associated *Handshake Response* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) to the associated HTTP Response.
 
 JSON schema for the HTTP request and response during [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) SHALL fullfill the [GP SERAM OpenAPI specification](/spec/gpseram.yaml).
 
-Binding of the Remote Management
---------------------------------
+Command Exchange Step
+---------------------
 
 The *Order* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) SHALL be mapped to an HTTP response  and the associated *Report* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) to the next HTTP Request.
 
 ![HTTP messages](images/GP_SERAM__HTTP_Command_Exchange.png)
 
-The JSON schema for the HTTP request and response during [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) SHALL fullfill the [GP SERAM OpenAPI specification](/spec/gpseram.yaml).
+The JSON schema for the HTTP request and response during [Command Exchange](GPSERAM__TerminologyAndDefinitions.md#CommandExchange) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) SHALL fullfill the [GP SERAM OpenAPI specification](/spec/gpseram.yaml).
 
 
 Transmission Errors
