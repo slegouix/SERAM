@@ -21,8 +21,6 @@ Management Session and HTTP messages
 
 HTTP messages are attached with a [Managment Session](GPSERAM__TerminologyAndDefinitions.md#ManagementSession) based on the [sessionId](GPSERAM__TerminologyAndDefinitions.md#sessionId). The [sessionId](GPSERAM__TerminologyAndDefinitions.md#sessionId) is explicitly inserted in each HTTP request and implicitly determined for HTTP response based on the client-server paradigm of the HTTP protocol.
 
-![HTTP messages](images/GP_SERAM__HTTP.png)
-
 Implementors MAY uses another HTTP mechanism to reinforce the HTTP session (e.g. HTTP cookies). A [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) SHOULD support HTTP cookies as defined in [RFC6265](https://www.rfc-editor.org/rfc/rfc6265).
 
 HTTP Polling
@@ -55,6 +53,8 @@ Handshake Step
 --------------
 
 The *Handshake Command* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) SHALL be mapped to a HTTP POST request and the associated *Handshake Response* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) to the associated HTTP Response.
+
+![HTTP messages](images/GP_SERAM__HTTP_Handshake.png)
 
 JSON schema for the HTTP request and response during [Handshake](GPSERAM__TerminologyAndDefinitions.md#Handshake) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) SHALL fullfill the [GP SERAM OpenAPI specification](/spec/gpseram.yaml).
 
