@@ -63,12 +63,12 @@ Binding of the Remote Management
 
 The *Order* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) SHALL be mapped to an HTTP response  and the associated *Report* [Message](GPSERAM__TerminologyAndDefinitions.md#Message) to the next HTTP Request.
 
-![HTTP messages](images/GP_SERAM__HTTP.png)
-Transmission Errors
+![HTTP messages](images/GP_SERAM__HTTP_Command_Exchange.png)
 
 The JSON schema for the HTTP request and response during [Remote Management Session](GPSERAM__TerminologyAndDefinitions.md#RemoteManagementSession) [Step](GPSERAM__TerminologyAndDefinitions.md#Step) SHALL fullfill the [GP SERAM OpenAPI specification](/spec/gpseram.yaml).
 
 
+Transmission Errors
 -------------------
 
 The [Local Agent](GPSERAM__TerminologyAndDefinitions.md#LocalAgent) and the [Remote Agent](GPSERAM__TerminologyAndDefinitions.md#RemoteAgent) relies on HTTP protocol to their exchanges. Most of the transmission errors will be transparently resumed by the TCP (Transmission Control Protocol) end-to-end stack.
