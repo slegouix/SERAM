@@ -24,6 +24,7 @@ Informative References
 |                                                                                       |                                                                                                        |
 |---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | Standard / Specification                                                              | Description                                                                                            |
-| [RFC6202](https://www.rfc-editor.org/rfc/rfc6202)                                     | IETF – Known Issues and Best Practices for the Use of Long Polling and Streaming in Bidirectional HTTP |
+| [GPC_SPE](https://globalplatform.org/specs-library/card-specification-v2-3-1/)        | GlobalPlatform – Card Specification V2.3.1                                                             |
 | [OMAPI](https://globalplatform.org/specs-library/open-mobile-api-specification-v3-3/) | GlobalPlatform – Open Mobile API Specification version 3.3                                             |
+| [RFC6202](https://www.rfc-editor.org/rfc/rfc6202)                                     | IETF – Known Issues and Best Practices for the Use of Long Polling and Streaming in Bidirectional HTTP |
 
