@@ -1,7 +1,7 @@
 {
   "ramCommands": [
     {
-      "ramCommandType": "stopCommand",
+      "ramCommandType": "stopCommand"
     }
   ]
 }

@@ -1,10 +1,10 @@
 {
-  "delay": 1
+  "delay": 1,
   "chosenSecureElement": {
     "seType": "eSE",
     "seId": "89001012012341234012345678901224",
     "seExtraInfo": "SAM"
-  }
+  },
   "ramCommands": [
     {
       "ramCommandType": "seRamCommand",
