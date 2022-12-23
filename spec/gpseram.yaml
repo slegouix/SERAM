@@ -76,7 +76,19 @@ paths:
             examples:
               handshakeRequest:
                 summary: Sample of an HTTP request for Handshake Command
-                externalValue: 'examples/handshake.HttpRequest.json'
+                value:
+                  {
+                    "secureElements": [
+                      {
+                        "seType": "eSE",
+                        "seId": "89001012012341234012345678901224",
+                        "seExtraInfo": "SAM"
+                      }
+                    ],
+                    "supportedTransportProtocols": [ "HTTPS" ],
+                    "supportedDataFormats": [ "application/json" ],
+                    "supportedVersion": [ "2.0.0" ]
+                  }
       responses:
         '200':
           description: OK
@@ -87,7 +99,12 @@ paths:
               examples:
                 handshakeResponse:
                   summary: Sample of an HTTP response for handshake Response
-                  externalValue: 'examples/handshake.HttpResponse.json'
+                  value:
+                    {
+                      "chosenTransportProtocol": "HTTPS",
+                      "chosenDataFormat": "application/json",
+                      "chosenVersion": "2.0.0"
+                    }
         '404':
           description: sessionId not found
         '406':
@@ -125,10 +142,32 @@ paths:
             examples:
               pollingRequest:
                 summary: sample of an HTTP polling request
-                externalValue: 'examples/polling.HttpRequest.json'
+                value:
+                  {
+                    "localAgentStatus": {
+                      "localAgentStatusEnum": "POLLING",
+                      "executeRamCommands": 0
+                    }
+                  }
               seRamResponseRequest:
                 summary: sample of an HTTP request with SE RAM responses
-                externalValue: 'examples/seRamResponse.HttpRequest.json'
+                value:
+                  {
+                    "localAgentStatus": {
+                      "localAgentStatusEnum": "PROCESSED",
+                      "executeRamCommands": 3
+                    },
+                    "ramResponses": [
+                      {
+                        "ramResponseType": "seRamResponse",
+                        "listOfRAPDU": [ "9000", "9000" ]
+                      },
+                      {
+                        "ramResponseType": "seRamResponse",
+                        "listOfRAPDU": [ "9000" ]
+                      }
+                    ]
+                  }
       responses:
         '200':
           description: OK
@@ -139,19 +178,58 @@ paths:
               examples:
                 pollingResponse:
                   summary: sample of an HTTP polling response
-                  externalValue: 'examples/polling.HttpResponse.json'
+                  value:
+                    {
+                      "delay": 0
+                    }
                 startCommandResponse:
                   summary: sample of an HTTP response with Start Command
-                  externalValue: 'examples/startCommand.HttpResponse.json'
+                  value:
+                    {
+                      "ramCommands": [
+                        {
+                          "ramCommandType": "startCommand"
+                        }
+                      ]
+                    }
                 seRamCommandResponse:
                   summary: sample of an HTTP response with SE RAM Command
-                  externalValue: 'examples/seRamCommand.HttpResponse.json'
+                  value:
+                    {
+                      "delay": 1,
+                      "chosenSecureElement": {
+                        "seType": "eSE",
+                        "seId": "89001012012341234012345678901224",
+                        "seExtraInfo": "SAM"
+                      },
+                      "ramCommands": [
+                        {
+                          "ramCommandType": "seRamCommand",
+                          "listOfCAPDU": [ "00A40400OA0001020304050607080900A" ]
+                        }
+                      ]
+                    }
                 notificationResponse:
                   summary: sample of an HTTP response with Notification Command
-                  externalValue: 'examples/notificationCommand.HttpResponse.json'
+                  value:
+                    {
+                      "ramCommands": [
+                        {
+                          "ramCommandType": "notificationCommand",
+                          "deviceAppNotification": "step1/action2/OK"
+                        }
+                      ]
+                    }
                 stopCommandResponse:
                   summary: sample of an HTTP response with Stop Command
-                  externalValue: 'examples/stopCommand.HttpResponse.json'
+                  value:
+                    {
+                      "ramCommands": [
+                        {
+                          "ramCommandType": "stopCommand"
+                        }
+                      ]
+                    }
         '404':
           description: Session id not found
         '500':
