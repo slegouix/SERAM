@@ -75,7 +75,7 @@ paths:
               $ref: 'messages.yaml#/ramHandshakeCommand'
             examples:
               handshakeRequest:
-                summary: Sample of an HTTP request for Handshake Command
+                summary: Handshake Command Message
                 externalValue: 'examples/handshake.HttpRequest.json'
       responses:
         '200':
@@ -86,7 +86,7 @@ paths:
                 $ref: 'messages.yaml#/ramHandshakeResponse'
               examples:
                 handshakeResponse:
-                  summary: Sample of an HTTP response for handshake Response
+                  summary: Handshake Response Message
                   externalValue: 'examples/handshake.HttpResponse.json'
         '404':
           description: sessionId not found
@@ -123,11 +123,11 @@ paths:
             schema:
               $ref: 'messages.yaml#/remoteManagementReport'
             examples:
-              pollingRequest:
-                summary: sample of an HTTP polling request
+              withoutResponse:
+                summary: Report Message to poll the Remote Agent
                 externalValue: 'examples/polling.HttpRequest.json'
-              seRamResponseRequest:
-                summary: sample of an HTTP request with SE RAM responses
+              seRamResponse:
+                summary: Report Message with SE RAM responses
                 externalValue: 'examples/seRamResponse.HttpRequest.json'
       responses:
         '200':
@@ -137,20 +137,23 @@ paths:
               schema:
                 $ref: 'messages.yaml#/remoteManagementOrder'
               examples:
-                pollingResponse:
-                  summary: sample of an HTTP polling response
+                withoutCommand:
+                  summary: Order Message without any Command (polling)
                   externalValue: 'examples/polling.HttpResponse.json'
-                startCommandResponse:
-                  summary: sample of an HTTP response with Start Command
+                startCommand:
+                  summary: Order Message with a Start Command
                   externalValue: 'examples/startCommand.HttpResponse.json'
-                seRamCommandResponse:
-                  summary: sample of an HTTP response with SE RAM Command
+                seRamCommand:
+                  summary: Order Message with a SE RAM Command
                   externalValue: 'examples/seRamCommand.HttpResponse.json'
-                notificationResponse:
-                  summary: sample of an HTTP response with Notification Command
+                notificationCommand:
+                  summary: Order Message with a Notification Command
                   externalValue: 'examples/notificationCommand.HttpResponse.json'
-                stopCommandResponse:
-                  summary: sample of an HTTP response with Stop Command
+                stopCommand:
+                  summary: Order Message with a Stop Command
+                  externalValue: 'examples/stopCommand.HttpResponse.json'
+                allCommands:
+                  summary: Order Message with a Start, SE RAM, Notification and Stop Command
                   externalValue: 'examples/stopCommand.HttpResponse.json'
         '404':
           description: Session id not found

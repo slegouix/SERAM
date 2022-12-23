@@ -75,7 +75,7 @@ paths:
               $ref: '#/components/schemas/ramHandshakeCommand'
             examples:
               handshakeRequest:
-                summary: Sample of an HTTP request for Handshake Command
+                summary: Handshake Command Message
                 value:
                   {
                     "secureElements": [
@@ -98,7 +98,7 @@ paths:
                 $ref: '#/components/schemas/ramHandshakeResponse'
               examples:
                 handshakeResponse:
-                  summary: Sample of an HTTP response for handshake Response
+                  summary: Handshake Response Message
                   value:
                     {
                       "chosenTransportProtocol": "HTTPS",
@@ -140,8 +140,8 @@ paths:
             schema:
               $ref: '#/components/schemas/remoteManagementReport'
             examples:
-              pollingRequest:
-                summary: sample of an HTTP polling request
+              withoutResponse:
+                summary: Report Message to poll the Remote Agent
                 value:
                   {
                     "localAgentStatus": {
@@ -149,8 +149,8 @@ paths:
                       "executeRamCommands": 0
                     }
                   }
-              seRamResponseRequest:
-                summary: sample of an HTTP request with SE RAM responses
+              seRamResponse:
+                summary: Report Message with SE RAM responses
                 value:
                   {
                     "localAgentStatus": {
@@ -176,14 +176,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/remoteManagementOrder'
               examples:
-                pollingResponse:
-                  summary: sample of an HTTP polling response
+                withoutCommand:
+                  summary: Order Message without any Command (polling)
                   value:
                     {
                       "delay": 0
                     }
-                startCommandResponse:
-                  summary: sample of an HTTP response with Start Command
+                startCommand:
+                  summary: Order Message with a Start Command
                   value:
                     {
                       "ramCommands": [
@@ -192,8 +192,8 @@ paths:
                         }
                       ]
                     }
-                seRamCommandResponse:
-                  summary: sample of an HTTP response with SE RAM Command
+                seRamCommand:
+                  summary: Order Message with a SE RAM Command
                   value:
                     {
                       "delay": 1,
@@ -209,8 +209,8 @@ paths:
                         }
                       ]
                     }
-                notificationResponse:
-                  summary: sample of an HTTP response with Notification Command
+                notificationCommand:
+                  summary: Order Message with a Notification Command
                   value:
                     {
                       "ramCommands": [
@@ -220,8 +220,18 @@ paths:
                         }
                       ]
                     }
-                stopCommandResponse:
-                  summary: sample of an HTTP response with Stop Command
+                stopCommand:
+                  summary: Order Message with a Stop Command
+                  value:
+                    {
+                      "ramCommands": [
+                        {
+                          "ramCommandType": "stopCommand"
+                        }
+                      ]
+                    }
+                allCommands:
+                  summary: Order Message with a Start, SE RAM, Notification and Stop Command
                   value:
                     {
                       "ramCommands": [
