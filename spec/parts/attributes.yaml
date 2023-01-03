@@ -30,10 +30,10 @@
             - UNAVAILABLE_SE
             - UNKNOWN_FAILURE
             - UNGRANTED_ACCESS
-        executedRamCommands:
+        executedSeRamCommands:
           description: >-
-            Number of RAM command executed. Value SHALL be set to zero during
-            polling.<br>
+            Number of SE RAM command executed. Value SHALL be set to zero
+            during polling.<br>
             The Remote Agent can determine whether an error occurred if the
             value differs from the number of commands sent.
           type: integer

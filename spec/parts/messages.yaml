@@ -74,10 +74,10 @@
       properties:
         delay:
           description: >-
-            Delay in second the device local agent had to wait before sending
-            data to the platform.
+            Delay in millisecond the Local Agent had to wait before sending
+            data to the platform. Uses '0' to avoid having any delay.
           type: integer
-          default: 1
+          default: 100
         chosenSecureElement:
           allOf:
             - description: >-

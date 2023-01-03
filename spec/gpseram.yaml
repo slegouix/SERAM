@@ -155,7 +155,7 @@ paths:
                   {
                     "localAgentStatus": {
                       "localAgentStatusEnum": "PROCESSED",
-                      "executeRamCommands": 3
+                      "executedSeRamCommands": 2
                     },
                     "ramResponses": [
                       {
@@ -180,7 +180,7 @@ paths:
                   summary: Order Message without any Command (polling)
                   value:
                     {
-                      "delay": 0
+                      "delay": 50
                     }
                 startCommand:
                   summary: Order Message with a Start Command
@@ -234,7 +234,24 @@ paths:
                   summary: Order Message with a Start, SE RAM, Notification and Stop Command
                   value:
                     {
+                      "delay": 0,
+                      "chosenSecureElement": {
+                        "seType": "eSE",
+                        "seId": "89001012012341234012345678901224",
+                        "seExtraInfo": "SAM"
+                      },
                       "ramCommands": [
+                        {
+                          "ramCommandType": "startCommand"
+                        },
+                        {
+                          "ramCommandType": "seRamCommand",
+                          "listOfCAPDU": [ "00A40400OA0001020304050607080900A" ]
+                        },
+                        {
+                          "ramCommandType": "notificationCommand",
+                          "deviceAppNotification": "step1/action2/OK"
+                        },
                         {
                           "ramCommandType": "stopCommand"
                         }
@@ -324,10 +341,10 @@ components:
       properties:
         delay:
           description: >-
-            Delay in second the device local agent had to wait before sending
-            data to the platform.
+            Delay in millisecond the Local Agent had to wait before sending
+            data to the platform. Uses '0' to avoid having any delay.
           type: integer
-          default: 1
+          default: 100
         chosenSecureElement:
           allOf:
             - description: >-

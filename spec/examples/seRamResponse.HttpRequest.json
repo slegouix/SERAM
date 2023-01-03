@@ -1,7 +1,7 @@
 {
   "localAgentStatus": {
     "localAgentStatusEnum": "PROCESSED",
-    "executeRamCommands": 3
+    "executedSeRamCommands": 2
   },
   "ramResponses": [
     {

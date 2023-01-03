@@ -154,7 +154,7 @@ paths:
                   externalValue: 'examples/stopCommand.HttpResponse.json'
                 allCommands:
                   summary: Order Message with a Start, SE RAM, Notification and Stop Command
-                  externalValue: 'examples/stopCommand.HttpResponse.json'
+                  externalValue: 'examples/allCommands.HttpResponse.json'
         '404':
           description: Session id not found
         '500':
