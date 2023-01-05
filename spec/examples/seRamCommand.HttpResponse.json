@@ -1,5 +1,5 @@
 {
-  "delay": 1,
+  "delay": 100,
   "chosenSecureElement": {
     "seType": "eSE",
     "seId": "89001012012341234012345678901224",

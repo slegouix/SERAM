@@ -1,13 +1,13 @@
 GP SERAM - Protocol Overview
 ============================
 
-This specification defined a protocol that allows a [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) to request the management of a [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement) by a [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform).
+This specification defines a protocol that allows a [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) to request the management of a [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement) by a [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform).
 
-The following figure present the generic architecture of GP SERAM and its environment. All part in blue is defined in this specification.
+The following figure presents the global architecture of GP SERAM and its environment. All words in blue are defined in this specification.
 
 ![Architecture Overview](images/GP_SERAM__Architecture_Overview.png)
 
-In this architecture, a [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) and a [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) manage the protocol to allow the [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform) to interact with a [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) and the [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement).
+In this architecture, a [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) and a [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) manage this protocol to allow the [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform) to interact with a [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) and the [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement).
 
 While [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform), [Device](GPSERAM__Terminology_And_Definitions.md#Device) and [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement) are physical entities, the [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) and [Core Management Platform](GPSERAM__Terminology_And_Definitions.md#CoreManagementPlatform) are logical components, and the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) and the [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) in this specification are to be considered as functions. These functions might be implemented as standalone applications or as libraries integrated inside larger business applications. In the GP SERAM context, the terms [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) and [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) may be used interchangeably with *Remote Agent function* and *Local Agent function*.
 
@@ -28,7 +28,7 @@ GP SERAM is a message-oriented protocol which used the following protocol stack:
 
 How [Messages](GPSERAM__Terminology_And_Definitions.md#Message) are carried on the network relies on the [Protocol Binding](GPSERAM__Terminology_And_Definitions.md#ProtocolBinding) used by the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) and the [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent). A [Protocol Binding](GPSERAM__Terminology_And_Definitions.md#ProtocolBinding) defines the rules to map [Messages](GPSERAM__Terminology_And_Definitions.md#Message) on the [Data Format](GPSERAM__Terminology_And_Definitions.md#DataFormat) layer and the [Transport](GPSERAM__Terminology_And_Definitions.md#Transport) layer.
 
-This version of the specification defined the following [Data Format](GPSERAM__Terminology_And_Definitions.md#DataFormat) and [Transport](GPSERAM__Terminology_And_Definitions.md#Transport) protocol layers:
+This version of the specification defines the following [Data Format](GPSERAM__Terminology_And_Definitions.md#DataFormat) and [Transport](GPSERAM__Terminology_And_Definitions.md#Transport) protocol layers:
 
 -   **HTTPS** as [Transport](GPSERAM__Terminology_And_Definitions.md#Transport)
 
@@ -44,9 +44,9 @@ Others [Protocol Binding](GPSERAM__Terminology_And_Definitions.md#ProtocolBindin
 
 ### Management Session
 
-To synchronize the management process, a [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) and a [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform) relies on a session identifier, named [sessionId](GPSERAM__Terminology_And_Definitions.md#sessionId). The [sessionId](GPSERAM__Terminology_And_Definitions.md#sessionId) is shared and used for all communications between the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) and the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent).
+A [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) and a [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform) relies on a session identifier, named [sessionId](GPSERAM__Terminology_And_Definitions.md#sessionId). The [sessionId](GPSERAM__Terminology_And_Definitions.md#sessionId) is shared and used for all communications between the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) and the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent).
 
-The timing frame during which it is performed some management tasks that are associated with one sessionId is called the [Management Session](GPSERAM__Terminology_And_Definitions.md#ManagementSession).
+The session during which is performed some management tasks that are associated with one sessionId is called the [Management Session](GPSERAM__Terminology_And_Definitions.md#ManagementSession).
 
 ![Management Session](images/GP_SERAM__Management_Session.png)
 
@@ -54,13 +54,13 @@ The [Management Session](GPSERAM__Terminology_And_Definitions.md#ManagementSessi
 
 ### Protocol Steps
 
-As shown by the next figure, the protocol has three steps. First the [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) is triggered by the [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) with the [sessionId](GPSERAM__Terminology_And_Definitions.md#sessionId) and the [RA Endpoint](GPSERAM__Terminology_And_Definitions.md#RAEndpoint). It then negotiates the [Data Format](GPSERAM__Terminology_And_Definitions.md#DataFormat) and [Transport](GPSERAM__Terminology_And_Definitions.md#Transport) protocol to use with the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent). Finally, the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) make the task required for the [Management Session](GPSERAM__Terminology_And_Definitions.md#ManagementSession).
+As shown by the next figure, this protocol has three steps. First the [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) is triggered by the [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication) with the [sessionId](GPSERAM__Terminology_And_Definitions.md#sessionId) and the [RA Endpoint](GPSERAM__Terminology_And_Definitions.md#RAEndpoint). It then negotiates the [Data Format](GPSERAM__Terminology_And_Definitions.md#DataFormat) and [Transport](GPSERAM__Terminology_And_Definitions.md#Transport) protocol to use with the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent). Finally, the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) make the task required for the [Management Session](GPSERAM__Terminology_And_Definitions.md#ManagementSession).
 
 ![Protocol Steps](images/GP_SERAM__Protocol_Steps.png)
 
 Most of the [Initialization](GPSERAM__Terminology_And_Definitions.md#Initialization) [Step](GPSERAM__Terminology_And_Definitions.md#Step) is out of the scope of this document.
 
-During the [Handshake](GPSERAM__Terminology_And_Definitions.md#Handshake) [Step](GPSERAM__Terminology_And_Definitions.md#Step), the [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) perform a protocol negotiation with the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent), by sending its capabilities, the session identifier, and a list of manageable [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement). A [Protocol Binding](GPSERAM__Terminology_And_Definitions.md#ProtocolBinding) to be used for the next step is then selected.
+During the [Handshake](GPSERAM__Terminology_And_Definitions.md#Handshake) [Step](GPSERAM__Terminology_And_Definitions.md#Step), the [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) performs a protocol negotiation with the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent), by sending its capabilities, the session identifier, and a list of manageable [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement). A [Protocol Binding](GPSERAM__Terminology_And_Definitions.md#ProtocolBinding) to be used for the next step is then selected.
 
 Next, the [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform) starts a [Command Exchange](GPSERAM__Terminology_And_Definitions.md#CommandExchange) [Step](GPSERAM__Terminology_And_Definitions.md#Step) by sending a *Start* [Command](GPSERAM__Terminology_And_Definitions.md#Command). During the [Command Exchange](GPSERAM__Terminology_And_Definitions.md#CommandExchange), the [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform) may send *APDUs* to the [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement), or send notifications to the [Device Application](GPSERAM__Terminology_And_Definitions.md#DeviceApplication). The end of the [Management Session](GPSERAM__Terminology_And_Definitions.md#ManagementSession) is announced by a *Stop* [Command](GPSERAM__Terminology_And_Definitions.md#Command) form the [Management Platform](GPSERAM__Terminology_And_Definitions.md#ManagementPlatform).
 
@@ -85,7 +85,7 @@ Handshaking allows a [Local Agent](GPSERAM__Terminology_And_Definitions.md#Local
 
 This method shall be used by the [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) to tell which [Data Format](GPSERAM__Terminology_And_Definitions.md#DataFormat) and which [Transport](GPSERAM__Terminology_And_Definitions.md#Transport) protocols it supports. In response, the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) shall tell which ones it selects.
 
-The attributes which are negotiate are:
+The attributes which are negotiated are:
 
 -   The secure elements: the [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) provides a list of [Secure Element](GPSERAM__Terminology_And_Definitions.md#SecureElement) which may be targeted by the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent)
 

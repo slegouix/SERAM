@@ -28,7 +28,7 @@
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
                 <version>3.0.35</version>
                 <configuration>
-                    <inputSpec>${basedir}/openapi/gpseram.yaml</inputSpec>
+                    <inputSpec>${basedir}/spec/gpseram.yaml</inputSpec>
                     <language>jaxrs-cxf</language>
                     <modelPackage>org.globalplatform.se.ram.bean</modelPackage>
                     <apiPackage>org.globalplatform.se.ram.service</apiPackage> 

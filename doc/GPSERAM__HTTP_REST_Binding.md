@@ -5,7 +5,7 @@ This file details the *HTTP REST Binding* which uses HTTPS as [Transport](GPSERA
 
 The [Local Agent](GPSERAM__Terminology_And_Definitions.md#LocalAgent) acts as a HTTP client and the [Remote Agent](GPSERAM__Terminology_And_Definitions.md#RemoteAgent) as a HTTP server. Each GP SERAM [Message](GPSERAM__Terminology_And_Definitions.md#Message) may be transmitted in exactly one HTTP message.
 
-The formal API specification of the *HTTP REST Binding* is provided in [OpenAPI format](/spec/gpseram.yaml). This specification file may be used to generate code skeleton.
+The formal API specification of the *HTTP REST Binding* is provided in [OpenAPI format](/spec/gpseram.yaml). This specification file may be used to generate code skeleton as shown in maven project file (pom.xml).
 
 The *HTTP REST Binding* SHALL comply with:
 - [RFC2818 – HTTP Over TLS](https://www.rfc-editor.org/rfc/rfc2818)
