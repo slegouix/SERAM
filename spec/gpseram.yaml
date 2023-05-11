@@ -180,7 +180,7 @@ paths:
                   summary: Order Message without any Command (polling)
                   value:
                     {
-                      "delay": 50
+                      "delay": 500
                     }
                 startCommand:
                   summary: Order Message with a Start Command
@@ -196,7 +196,7 @@ paths:
                   summary: Order Message with a SE RAM Command
                   value:
                     {
-                      "delay": 1,
+                      "delay": 100,
                       "chosenSecureElement": {
                         "seType": "eSE",
                         "seId": "89001012012341234012345678901224",
@@ -508,7 +508,6 @@ components:
       type: string
       enum:
         - application/json
-        - application/cbor
 
     localAgentStatus:
       description: >-
@@ -530,10 +529,10 @@ components:
             - UNAVAILABLE_SE
             - UNKNOWN_FAILURE
             - UNGRANTED_ACCESS
-        executedRamCommands:
+        executedSeRamCommands:
           description: >-
-            Number of RAM command executed. Value SHALL be set to zero during
-            polling.<br>
+            Number of SE RAM command executed. Value SHALL be set to zero
+            during polling.<br>
             The Remote Agent can determine whether an error occurred if the
             value differs from the number of commands sent.
           type: integer
@@ -586,7 +585,6 @@ components:
       type: string
       enum:
         - HTTPS
-        - CoAP
 
     version:
       description: A Version of GP SERAM
